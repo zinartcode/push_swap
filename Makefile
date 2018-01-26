@@ -6,18 +6,19 @@
 #    By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/23 20:45:15 by azinnatu          #+#    #+#              #
-#    Updated: 2018/01/23 21:58:36 by azinnatu         ###   ########.fr        #
+#    Updated: 2018/01/25 23:33:24 by azinnatu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-OBJS =	push_swap.o 			
+OBJS =	push_swap.o \
+		check_int.o			
 
 LIBFT= libft/libft.a
 LIBS = $(LIBFT)
 
 HEADERS = ft_ls.h ./libft/includes/libft.h
 
-CFLAGS += -Wall -Wextra -Werror -g
+CFLAGS +=  -g
 
 NAME = push_swap
 
@@ -39,3 +40,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+	# -Wall -Wextra -Werror
