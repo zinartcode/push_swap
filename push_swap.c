@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 21:58:49 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/01/25 23:54:58 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/01/26 00:23:35 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int	main(int ac, char **av)
 	// ft_bzero(stack, sizeof(t_stack) * 2);
 	while(++i < ac)
 	{
-		// printf("my av is: %s\n", av[i]);
+		printf("my av is: %s\n", av[i]);
 		if (is_num(av[i]) && check_int(av[i]))
 			ls_push_back(&a, ft_atoi(av[i]));
 		else
-			printf("Error\n");
+			ft_error(&a);
 	}
 	print_list(a);
 	return (0);
@@ -43,4 +43,25 @@ void	print_list(t_list *list)
         printf("%d ", current->data);
         current = current->next;
     }
+}
+
+static int	ft_error(t_list **list)
+{
+	ft_putstr_fd("Error\n", 2);
+	free_list(list);
+	exit(0);
+}
+
+void			free_list(t_list **list)
+{
+	t_list		*temp;
+	t_list		*temp2;
+
+	temp = *list;
+	while (temp && temp->next)
+	{
+		temp2 = temp->next;
+		free(temp);
+		temp = temp2;
+	}
 }
