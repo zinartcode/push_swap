@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 23:11:24 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/01/25 23:46:30 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/01/26 19:34:36 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,21 @@ int	is_num(char *str)
 	if (str[i] == '-')
 		i++;
 	while (str[i] && ft_isdigit(str[i]))
+		i++;
+	if (str[i] == '\0')
+		return (1);
+	else
+		return (0);
+}
+
+int	is_multinum(char *str)
+{
+	int i;
+
+	i = 0;
+	if (str[i] == '-')
+		i++;
+	while (str[i] && (ft_isdigit(str[i]) || str[i] == ' '))
 		i++;
 	if (str[i] == '\0')
 		return (1);
