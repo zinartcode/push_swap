@@ -1,7 +1,23 @@
-## push_swap
+# push_swap
 
 The push_swap program generates a list of instructions that sort a stack of integers using the original stack A and a second  stack B. The goal is to sort in ascending order numbers into stack A.
-The following manipulations are allowed:
+
+## The goal is to write two programms in C
+
+• The first, named checker which takes integer arguments and reads instructions on the standard output. Once read, checker executes them and displays OK if integers are sorted. Otherwise, it will display KO.
+
+• The second one called push_swap which calculates and displays on the standard output the smallest progam using Push_swap instruction language that sorts integer arguments received.
+
+## The following functions are allowed:
+
+* __write__
+
+* __read__
+* __malloc__
+* __free__
+* __exit__
+
+## The following manipulations are allowed:
 
 * __sa__ - swaps the order of the first two values in stack A.
 * __sb__ - swaps the order of the first two values in stack B.
