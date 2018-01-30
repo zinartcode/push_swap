@@ -6,12 +6,15 @@
 #    By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/23 20:45:15 by azinnatu          #+#    #+#              #
-#    Updated: 2018/01/25 23:33:24 by azinnatu         ###   ########.fr        #
+#    Updated: 2018/01/29 15:47:59 by azinnatu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 OBJS =	push_swap.o \
-		check_int.o			
+		check_int.o	\
+		swap_stack.o \
+		rotate_stack.o \
+		reverse_stack.o		
 
 LIBFT= libft/libft.a
 LIBS = $(LIBFT)
@@ -33,12 +36,22 @@ $(NAME): $(OBJS) $(LIBFT)
 $(OBJ): $(HEADERS)
 
 clean: 
-	@make -C libft/ fclean
+	# @make -C libft/ fclean
 	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+
+# clean: 
+# 	@make -C libft/ fclean
+# 	rm -f $(OBJS)
+
+# fclean: clean
+# 	rm -f $(NAME)
+
+# re: fclean all
 
 	# -Wall -Wextra -Werror
