@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 15:46:28 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/01/29 16:11:48 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/01/30 00:10:28 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	sa(t_stack *stack)
 		stack->a->data = stack->a->next->data;
 		stack->a->next->data = swap;
 	}
+	if (stack->is_push == 1)
+		ft_putstr("sa\n");
 }
 
 void	sb(t_stack *stack)
@@ -34,12 +36,16 @@ void	sb(t_stack *stack)
 		stack->b->data = stack->b->next->data;
 		stack->b->next->data = swap;
 	}
+	if (stack->is_push == 1)
+		ft_putstr("sb\n");
 }
 
 void	ss(t_stack *stack)
 {
 	sa(stack);
 	sb(stack);
+	if (stack->is_push == 1)
+		ft_putstr("ss\n");
 }
 
 void	pa(t_stack *stack)
@@ -53,6 +59,8 @@ void	pa(t_stack *stack)
 		temp->next = stack->a;
 		stack->a = temp;
 	}
+	if (stack->is_push == 1)
+		ft_putstr("pa\n");
 }
 
 void	pb(t_stack *stack)
@@ -66,4 +74,6 @@ void	pb(t_stack *stack)
 		temp->next = stack->b;
 		stack->b = temp;
 	}
+	if (stack->is_push == 1)
+		ft_putstr("pb\n");
 }

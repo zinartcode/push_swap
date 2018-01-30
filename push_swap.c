@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 21:58:49 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/01/29 16:25:29 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/01/30 00:03:32 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ int	main(int ac, char **av)
 
 	i = 0;
 	stack = malloc(sizeof(t_stack));
-	stack->b = NULL;
-	stack->a = NULL;
-	stack->count = 0;
+	init_stack(stack);
 	if (ac == 1)
 		return(0);
 	while(++i < ac)
@@ -33,109 +31,22 @@ int	main(int ac, char **av)
 		else
 			ft_error(&stack->a);
 	}
-	printf("Stack has %d elements\n", stack->count);
-	// print_list(stack->a);
-	// sa(stack);
-	// print_list(stack->a);
-	// pb(stack);
-	// print_list(stack->a);
-	// pb(stack);
-	// print_list(stack->a);
-	// print_list(stack->b);
-	// pa(stack);
-	// print_list(stack->a);
-	// ss(stack);
-	// print_list(stack->a);
-	// print_list(stack->b);
-	// 	ra(stack);
-	// print_list(stack->a);
-	// print_list(stack->b);
-	// 	rb(stack);
-	// print_list(stack->a);
-	// print_list(stack->b);
-		pb(stack);
-		pb(stack);
-		pb(stack);
-		sb(stack);
-	printf("stack a is: ");
-	print_list(stack->a);
-	printf("stack b is: ");
-	print_list(stack->b);
-			ss(stack);
-	printf("stack a is: ");
-	print_list(stack->a);
-	printf("stack b is: ");
-	print_list(stack->b);
-
-	rrr(stack);
-	printf("stack a is: ");
-	print_list(stack->a);
-	printf("stack b is: ");
-	print_list(stack->b);
-
-
+	printf("Stack has %d elements\n", stack->count);  //test
+	printf("stack a is: ");  //test
+	print_list(stack->a);  //test
+	if (stack->count <= 5)
+		short_sort(stack);
+	else
+		long_sort(stack);
+	printf(" Sorted stack a is: ");  //test
+	print_list(stack->a);  //test
 	return (0);
 }
 
-static void		run_multinum(int ac, char *av, t_stack *stack)
+void	init_stack(t_stack *stack)
 {
-	int		i;
-	int		j;
-	int		count;
-	char	*tmp;
-
-	j = 0;
-	count = 0;
-	i = 0;
-	while (i <= ft_strlen(av))
-	{
-		while (av[i] && av[i] == ' ')
-			i++;
-		if (ft_isdigit(av[i]) || (av[i] == '-' &&
-		ft_isdigit(av[i + 1])))
-		{
-			while(av[i] != '\0' && av[i] != ' ')
-			{
-				count++;
-				i++;
-			}
-			j = i - count;
-			tmp = ft_strndup(&av[j], count);
-			count = 0;
-			ls_push_back(stack, ft_atoi(tmp));
-		}
-		i++;
-	}
-}
-
-void	print_list(t_list *list)
-{
-    t_list * current = list;
-    while (current != NULL)
-    {
-        printf("%d ", current->data);
-        current = current->next;
-    }
-    printf("\n");
-}
-
-static int	ft_error(t_list **list)
-{
-	ft_putstr_fd("Error\n", 2);
-	free_list(list);
-	exit(0);
-}
-
-void			free_list(t_list **list)
-{
-	t_list		*temp;
-	t_list		*temp2;
-
-	temp = *list;
-	while (temp && temp->next)
-	{
-		temp2 = temp->next;
-		free(temp);
-		temp = temp2;
-	}
+	stack->b = NULL;
+	stack->a = NULL;
+	stack->count = 0;
+	stack->is_push = 1;
 }
