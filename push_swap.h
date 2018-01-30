@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 22:02:04 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/01/30 00:03:08 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/01/30 00:35:34 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int				is_multinum(char *str);
 void			run_multinum(int ac, char *av, t_stack *stack);
 int				is_sorted(t_list *list);
 void			short_sort(t_stack *stack);
-void			sort_three(t_stack *stack);
+void			sort_three(t_stack *stack, t_list *b);
 void			sort_five(t_stack *stack);
 void			long_sort(t_stack *stack);
 void			sa(t_stack *stack);
