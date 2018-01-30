@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 23:11:24 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/01/29 00:57:23 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/01/29 18:32:47 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,13 @@ void	ls_push_back(t_stack *stack, int nbr)
 	new = stack->a;
 	if (new)
 	{
-		while (new->next != NULL)
-			new = new->next;
-		new->next = ft_create_elem(nbr);
-		stack->count++;
+		if (new->data == nbr)
+			ft_error(&stack->a);
+		else
+			while (new->next != NULL)
+				new = new->next;
+			new->next = ft_create_elem(nbr);
+			stack->count++;
 	}
 	else
 	{

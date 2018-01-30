@@ -6,7 +6,7 @@
 #    By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/23 20:45:15 by azinnatu          #+#    #+#              #
-#    Updated: 2018/01/29 15:47:59 by azinnatu         ###   ########.fr        #
+#    Updated: 2018/01/29 17:13:37 by azinnatu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,10 @@ OBJS =	push_swap.o \
 		check_int.o	\
 		swap_stack.o \
 		rotate_stack.o \
-		reverse_stack.o		
+		reverse_stack.o	\
+		utilities.o	\
+		short_sort.o \
+		long_sort.o 
 
 LIBFT= libft/libft.a
 LIBS = $(LIBFT)

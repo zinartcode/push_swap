@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 15:45:38 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/01/29 15:59:39 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/01/30 00:09:29 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	ra(t_stack *stack)
 		temp->next = NULL;
 		stack->a = temp2;
 	}
+	if (stack->is_push == 1)
+		ft_putstr("ra\n");
 }
 
 void	rb(t_stack *stack)
@@ -44,10 +46,14 @@ void	rb(t_stack *stack)
 		temp->next = NULL;
 		stack->b = temp2;
 	}
+	if (stack->is_push == 1)
+		ft_putstr("rb\n");
 }
 
 void	rr(t_stack *stack)
 {
 	ra(stack);
 	rb(stack);
+	if (stack->is_push == 1)
+		ft_putstr("rr\n");
 }
