@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 23:11:24 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/01/26 19:34:36 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/01/29 00:57:23 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,19 +67,23 @@ int	check_int(char *str)
 	return (1);
 }
 
-void	ls_push_back(t_list **list, int nbr)
+void	ls_push_back(t_stack *stack, int nbr)
 {
 	t_list *new;
 
-	new = *list;
+	new = stack->a;
 	if (new)
 	{
 		while (new->next != NULL)
 			new = new->next;
 		new->next = ft_create_elem(nbr);
+		stack->count++;
 	}
 	else
-		*list = ft_create_elem(nbr);
+	{
+		stack->a = ft_create_elem(nbr);
+		stack->count++;
+	}
 }
 
 t_list	*ft_create_elem(int nbr)

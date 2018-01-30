@@ -1,0 +1,69 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap_stack.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/29 15:46:28 by azinnatu          #+#    #+#             */
+/*   Updated: 2018/01/29 16:11:48 by azinnatu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+void	sa(t_stack *stack)
+{
+	int swap;
+
+	if (stack->a && stack->a->next)
+	{
+		swap = stack->a->data;
+		stack->a->data = stack->a->next->data;
+		stack->a->next->data = swap;
+	}
+}
+
+void	sb(t_stack *stack)
+{
+	int swap;
+
+	if (stack->b && stack->b->next)
+	{
+		swap = stack->b->data;
+		stack->b->data = stack->b->next->data;
+		stack->b->next->data = swap;
+	}
+}
+
+void	ss(t_stack *stack)
+{
+	sa(stack);
+	sb(stack);
+}
+
+void	pa(t_stack *stack)
+{
+	t_list *temp;
+
+	if (stack->b)
+	{
+		temp = stack->b;
+		stack->b = stack->b->next;
+		temp->next = stack->a;
+		stack->a = temp;
+	}
+}
+
+void	pb(t_stack *stack)
+{
+	t_list *temp;
+
+	if (stack->a)
+	{
+		temp = stack->a;
+		stack->a = stack->a->next;
+		temp->next = stack->b;
+		stack->b = temp;
+	}
+}
