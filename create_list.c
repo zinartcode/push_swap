@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 20:48:53 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/01/30 20:51:00 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/01/31 00:07:46 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ls_push_back(t_stack *stack, int nbr)
 	new = stack->a;
 	if (new)
 	{
-		if (new->data == nbr)
+		if (is_double(stack->a, nbr))
 			ft_error(&stack->a);
 		else
 			while (new->next != NULL)
@@ -32,6 +32,20 @@ void	ls_push_back(t_stack *stack, int nbr)
 		stack->a = ft_create_elem(nbr);
 		stack->count++;
 	}
+}
+
+int		is_double(t_list *list, int nbr)
+{
+	t_list *tmp;
+
+	tmp = list;
+	while(tmp)
+	{
+		if (tmp->data == nbr)
+			return (1);
+		tmp = tmp->next;
+	}
+	return(0);
 }
 
 t_list	*ft_create_elem(int nbr)
