@@ -22,8 +22,8 @@ The push_swap program generates a list of instructions that sort a stack of inte
 * __sa__ - swaps the order of the first two values in stack A.
 * __sb__ - swaps the order of the first two values in stack B.
 * __ss__ - swaps the order of the first two values in both stacks.
-* __pa__ - moves the first element of stack A to the top of stack B.
-* __pb__ - moves the first element of stack B to the top of stack A.
+* __pa__ - moves the first element of stack B to the top of stack A.
+* __pb__ - moves the first element of stack A to the top of stack B.
 * __ra__ - moves the first element of stack A to the bottom of stack A.
 * __rb__ - moves the first element of stack B to the bottom of stack B.
 * __rr__ - performs __ra__ and __rb__ simultaneously.
