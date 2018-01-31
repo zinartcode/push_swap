@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 17:02:38 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/01/29 22:47:52 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/01/30 20:47:32 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	print_list(t_list *list)
     printf("\n");
 }
 
-int	ft_error(t_list **list)
+int		ft_error(t_list **list)
 {
 	ft_putstr_fd("Error\n", 2);
 	free_list(list);
@@ -75,36 +75,4 @@ void			free_list(t_list **list)
 		free(temp);
 		temp = temp2;
 	}
-}
-
-int	sml(t_list *list)
-{
-	t_list *temp;
-	int	i;
-
-	temp = list;
-	i = list->data;
-	while (temp->next != NULL)
-	{
-		if (i > temp->next->data)
-			i = temp->next->data;
-		temp = temp->next;
-	}
-	return (i);
-}
-
-int	big(t_list *list)
-{
-	t_list *temp;
-	int	i;
-
-	temp = list;
-	i = list->data;
-	while (temp->next != NULL)
-	{
-		if (i < temp->next->data)
-			i = temp->next->data;
-		temp = temp->next;
-	}
-	return (i);
 }

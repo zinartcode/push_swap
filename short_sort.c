@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 16:57:20 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/01/30 00:48:17 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/01/30 21:44:10 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,33 +32,74 @@ void	short_sort(t_stack *stack)
 
 void	sort_three(t_stack *stack)
 {
-	// printf(" smallest stack a is: %d\n", sml(stack->a));  //test
-	// printf(" biggest stack a is: %d\n", big(stack->a));  //test
-
-	if (stack->a->data == sml(stack->a) && stack->a->next->data == big(stack->a))
+	if (is_sorted(stack->a))
 	{
-		rra(stack);
-		sa(stack);
-	}
-	else if (stack->a->next->data == sml(stack->a))
-	{
-		if (stack->a->data > stack->a->next->next->data)
-			ra(stack);
-		else
+		if (stack->a->data == sml(stack->a) && stack->a->next->data == big(stack->a))
+		{
+			rra(stack);
 			sa(stack);
+		}
+		else if (stack->a->next->data == sml(stack->a))
+		{
+			if (stack->a->data > stack->a->next->next->data)
+				ra(stack);
+			else
+				sa(stack);
+		}
+		else if (stack->a->data > stack->a->next->data)
+		{
+			ra(stack);
+			sa(stack);
+		}
+		else
+			rra(stack);
 	}
-	else if (stack->a->data > stack->a->next->data)
-	{
-		ra(stack);
-		sa(stack);
-	}
-	else
-		rra(stack);
 }
 
-void	sort_five(t_stack *stack)
+// int	sort_five(t_stack *stack)
+// {
+// 	if (size(stack->b) == 2)
+// 		return (0);
+// 	if (stack->a->data < stack->a->next->data &&
+// 			stack->a->data < last(stack->a))
+// 		pb(stack);
+// 	else if (last(stack->a) < stack->a->data &&
+// 			last(stack->a) < stack->a->next->data)
+// 		rra(stack);
+// 	else
+// 		ra(stack);
+// 	sort_five(stack);
+// 	return (0);
+// }
+
+int	sort_five(t_stack *stack)
 {
-	printf("its %d\n", stack->count);
+	int	i;
+
+	i = 0;
+	while (i < 2)
+	{
+		if (sml(stack->a) == stack->a->data)
+		{
+			pb(stack);
+			i++;
+		}
+		else if (sml(stack->a) == last(stack->a))
+		{
+			rra(stack);
+			pb(stack);
+			i++;
+		}
+		else
+			while (sml(stack->a) != stack->a->data)
+				ra(stack);
+	}
+	sort_three(stack);
+	pa(stack);
+	pa(stack);
+	// print_list(stack->a);  //test
+	// print_list(stack->b);  //test
+	return (0);
 }
 
 int	is_sorted(t_list *list)

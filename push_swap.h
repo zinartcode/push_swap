@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 22:02:04 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/01/30 00:35:34 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/01/30 20:47:55 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ typedef struct	s_stack
 }				t_stack;
 
 int				is_num(char *str);
+int				size(t_list *list);
 int				sml(t_list *list);
 int				big(t_list *list);
+int				last(t_list *list);
 int				check_int(char *str);
 void			init_stack(t_stack *stack);
 void			ls_push_back(t_stack *stack, int nbr);
@@ -38,8 +40,8 @@ int				is_multinum(char *str);
 void			run_multinum(int ac, char *av, t_stack *stack);
 int				is_sorted(t_list *list);
 void			short_sort(t_stack *stack);
-void			sort_three(t_stack *stack, t_list *b);
-void			sort_five(t_stack *stack);
+void			sort_three(t_stack *stack);
+int				sort_five(t_stack *stack);
 void			long_sort(t_stack *stack);
 void			sa(t_stack *stack);
 void			sb(t_stack *stack);
