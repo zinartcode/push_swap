@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 22:02:04 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/01/30 20:47:55 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/01/31 00:08:34 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ int				size(t_list *list);
 int				sml(t_list *list);
 int				big(t_list *list);
 int				last(t_list *list);
+int				index_in_list(t_list *list, int n);
 int				check_int(char *str);
+int				is_double(t_list *list, int nbr);
 void			init_stack(t_stack *stack);
 void			ls_push_back(t_stack *stack, int nbr);
 t_list			*ft_create_elem(int nbr);
