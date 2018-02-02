@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 22:02:04 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/01/31 00:08:34 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/01 16:12:35 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void			short_sort(t_stack *stack);
 void			sort_three(t_stack *stack);
 int				sort_five(t_stack *stack);
 void			long_sort(t_stack *stack);
+void			b_to_a(t_stack *stack);
 void			sa(t_stack *stack);
 void			sb(t_stack *stack);
 void			ss(t_stack *stack);

@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 20:45:08 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/01/30 23:37:23 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/01/31 20:43:42 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,8 @@ int		big(t_list *list)
 {
 	t_list *temp;
 	int	i;
-
 	temp = list;
-	i = list->data;
+	i = temp->data;
 	while (temp->next != NULL)
 	{
 		if (i < temp->next->data)
@@ -63,10 +62,9 @@ int		last(t_list *list)
 	t_list *temp;
 
 	temp = list;
-	while (list && list->next)
-		list = list->next;
-	i = list->data;
-	list = temp;
+	while (temp && temp->next)
+		temp = temp->next;
+	i = temp->data;
 	return (i);
 }
 

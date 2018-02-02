@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 16:57:20 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/01/30 21:44:10 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/01/31 18:41:19 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,22 +56,6 @@ void	sort_three(t_stack *stack)
 	}
 }
 
-// int	sort_five(t_stack *stack)
-// {
-// 	if (size(stack->b) == 2)
-// 		return (0);
-// 	if (stack->a->data < stack->a->next->data &&
-// 			stack->a->data < last(stack->a))
-// 		pb(stack);
-// 	else if (last(stack->a) < stack->a->data &&
-// 			last(stack->a) < stack->a->next->data)
-// 		rra(stack);
-// 	else
-// 		ra(stack);
-// 	sort_five(stack);
-// 	return (0);
-// }
-
 int	sort_five(t_stack *stack)
 {
 	int	i;
@@ -97,8 +81,6 @@ int	sort_five(t_stack *stack)
 	sort_three(stack);
 	pa(stack);
 	pa(stack);
-	// print_list(stack->a);  //test
-	// print_list(stack->b);  //test
 	return (0);
 }
 
