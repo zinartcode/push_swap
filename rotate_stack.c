@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 15:45:38 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/01/30 00:09:29 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/01/31 20:18:34 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ra(t_stack *stack)
 	t_list *temp2;
 
 	temp = stack->a;
-	if (temp)
+	if (temp && temp->next)
 	{
 		temp2 = stack->a->next;
 		while (stack->a->next)
@@ -26,9 +26,9 @@ void	ra(t_stack *stack)
 		stack->a->next = temp;
 		temp->next = NULL;
 		stack->a = temp2;
+		if (stack->is_push == 1)
+			ft_putstr("ra\n");
 	}
-	if (stack->is_push == 1)
-		ft_putstr("ra\n");
 }
 
 void	rb(t_stack *stack)
@@ -37,7 +37,7 @@ void	rb(t_stack *stack)
 	t_list *temp2;
 
 	temp = stack->b;
-	if (temp)
+	if (temp && temp->next)
 	{
 		temp2 = stack->b->next;
 		while (stack->b->next)
@@ -45,9 +45,9 @@ void	rb(t_stack *stack)
 		stack->b->next = temp;
 		temp->next = NULL;
 		stack->b = temp2;
+		if (stack->is_push == 1)
+			ft_putstr("rb\n");
 	}
-	if (stack->is_push == 1)
-		ft_putstr("rb\n");
 }
 
 void	rr(t_stack *stack)
