@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 23:56:10 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/05 16:40:21 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/05 17:27:54 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	pre_sort_a(t_stack *stack)
 	 	else
 	 		ra(stack);
 	 }
-	 // printf("b stack size is: %d\n", size(stack->b));
+	 printf("b stack size is: %d\n", size(stack->b));
 }
 
 // void	b_to_a(t_stack *stack)
@@ -158,6 +158,9 @@ void	b_to_a_tail(t_stack *stack)
 			pa(stack);
 			i--;
 		}
+		else //while (stack->b && stack->b->data != big(stack->b))
+				rb(stack);
+			//pa(stack);
 		// printf(" I is %d\n", i);
 	 // 	printf(" stack a is: ");  //test
 		// print_list(stack->a);  //test

@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 21:58:49 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/05 16:09:44 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/05 17:31:48 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ int	main(int ac, char **av)
 	{
 		while (size(stack->a) >= 5)
 			pre_sort_a(stack);
+	 	printf(" stack a is: ");  //test
+		print_list(stack->a);  //test
+	 	printf(" stack b is: ");  //test
+		print_list(stack->b);  //test
 		sort_five(stack);
 		b_to_a_head(stack);
 		b_to_a_tail(stack);
@@ -50,7 +54,8 @@ int	main(int ac, char **av)
 	print_list(stack->a);  //test
 	printf(" stack b is: ");  //test
 	print_list(stack->b);  //test
-	init_stack(stack);
+	free_list(&stack->a);
+	free_list(&stack->b);
 	return (0);
 }
 
