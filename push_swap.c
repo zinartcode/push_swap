@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 21:58:49 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/01/30 23:17:19 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/05 16:09:44 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,20 @@ int	main(int ac, char **av)
 	if (stack->count != 1 && stack->count <= 5)
 		short_sort(stack);
 	else if (stack->count > 5)
-		long_sort(stack);
+	{
+		while (size(stack->a) >= 5)
+			pre_sort_a(stack);
+		sort_five(stack);
+		b_to_a_head(stack);
+		b_to_a_tail(stack);
+		// pre_sort_a(stack);			//	long_sort(stack);
+		// long_sort(stack);
+	}
 	printf(" Sorted stack a is: ");  //test
 	print_list(stack->a);  //test
 	printf(" stack b is: ");  //test
 	print_list(stack->b);  //test
+	init_stack(stack);
 	return (0);
 }
 
