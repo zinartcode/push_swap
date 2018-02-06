@@ -1,6 +1,6 @@
 # push_swap
 
-The push_swap program generates a list of instructions that sort a stack of integers using the original stack A and a second  stack B. The goal is to sort in ascending order numbers into stack A.
+The push_swap program generates a list of instructions that sort a stack of integers using the original stack A and a second  stack B. The goal is to sort integers in ascending order into stack A in as few operation as possible. 5 random numbers must be sortes in less than 12 operations, 100 random numbers in less than 700 operations and 500 numbers in less than 5300.
 
 ## The goal is to write two programms in C
 

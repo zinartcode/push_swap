@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/30 20:45:08 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/01/31 20:43:42 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/02 00:03:46 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,24 @@ int		sml(t_list *list)
 	return (i);
 }
 
+int		second_sml(t_list *list)
+{
+	t_list *temp;
+	int	i;
+	int n;
+
+	temp = list;
+	i = big(temp);
+	n = sml(temp);
+	while (temp->next != NULL)
+	{
+		if (i > temp->next->data && temp->next->data != n)
+			i = temp->next->data;
+		temp = temp->next;
+	}
+	return (i);
+}
+
 int		big(t_list *list)
 {
 	t_list *temp;
@@ -50,6 +68,26 @@ int		big(t_list *list)
 	while (temp->next != NULL)
 	{
 		if (i < temp->next->data)
+			i = temp->next->data;
+		temp = temp->next;
+	}
+	return (i);
+}
+
+int		second_big(t_list *list)
+{
+	t_list *temp;
+	int	i;
+	int	n;
+
+	temp = list;
+	n = big(temp);
+	i = sml(temp);
+	if (temp->data < n && temp->data > i)
+		i = temp->data;
+	while (temp->next != NULL)
+	{
+		if (i < temp->next->data && temp->next->data != n)
 			i = temp->next->data;
 		temp = temp->next;
 	}
@@ -74,6 +112,7 @@ int		index_in_list(t_list *list, int n)
 	t_list *temp;
 
 	temp = list;
+	i = 0;
 	while (temp->data != n)
 	{
 		temp = temp->next;
