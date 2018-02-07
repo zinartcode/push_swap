@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 16:57:20 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/06 15:26:38 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/06 20:44:30 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	sort_five(t_stack *stack)
 	int	i;
 
 	i = 0;
-	while (i < 2 && size(stack->a) > 3)
+	while (i < 2) //&& size(stack->a) > 3
 	{
 		if (sml(stack->a) == stack->a->data)
 		{
@@ -110,10 +110,17 @@ int	sort_five(t_stack *stack)
 
 int	is_sorted(t_list *list)
 {
-	if (list->next == NULL)
-		return (0);
-	else if (list->data > list->next->data)
+	t_list *tmp;
+
+	tmp = list;
+	if (tmp->next == NULL)
 		return (1);
 	else
-		return (is_sorted(list->next));
+		while (tmp->next != NULL)
+		{ 
+			if (tmp->data > tmp->next->data)
+				return (0);
+			tmp = tmp->next;
+		}
+		return (1);
 }
