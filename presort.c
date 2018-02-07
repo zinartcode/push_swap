@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 23:56:10 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/05 17:27:54 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/06 19:12:36 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	high_index(t_list *list, int nbr)
 	return (i);
 }
 
-void	pre_sort_a(t_stack *stack)
+void	presort_a(t_stack *stack)
 {
 	 int	i;
 	 int	count;
@@ -64,50 +64,8 @@ void	pre_sort_a(t_stack *stack)
 	 	else
 	 		ra(stack);
 	 }
-	 printf("b stack size is: %d\n", size(stack->b));
+	 // printf("b stack size is: %d\n", size(stack->b));
 }
-
-// void	b_to_a(t_stack *stack)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	// printf("Stack count is %d\n", stack->count); 
-// 	// printf("Stack b has %d elements\n", size(stack->b)); 
-// 	// printf("I'm here\n");  //test
-// 	while (size(stack->b) >= stack->count/2)
-// 	{
-// 		if (stack->b->data == big(stack->b))
-// 		{
-// 			pa(stack);
-// 			while (last(stack->b))
-// 			{
-// 				rrb(stack);
-// 				i--;
-// 			}
-// 		}
-// 		else
-// 		{
-// 		 	rb(stack);
-// 		 	i++;
-// 		}
-// 		if (last(stack->b) == big(stack->b))
-// 		{
-// 			rrb(stack);
-// 			pa(stack);
-// 		}
-// 		// if (stack->b->data == second_big(stack->b) && flag == 0)
-// 		// {
-// 		// // printf("its  second big here: %d\n", stack->a->data);
-// 		// 	pa(stack);
-// 		// 	flag = 0
-// 		// 	if (stack->a->data > stack->a->next->data)
-// 		// 		sb(stack);
-// 		// }
-// 		// else
-// 		// 	rb(stack);
-// 	}
-// }
 
 void	b_to_a_head(t_stack *stack)
 {
@@ -127,6 +85,8 @@ void	b_to_a_head(t_stack *stack)
 			// printf("I is %d\n", i);
 			if (stack->b->data == big(stack->b))
 				pa(stack);
+			if (stack->a->data > stack->a->next->data)
+				sa(stack);
 			else
 			{
 				rrb(stack);
@@ -134,6 +94,45 @@ void	b_to_a_head(t_stack *stack)
 			}
 		}
 	}
+}
+
+void	presort_b(t_stack *stack)
+{
+	 int	i;
+	 int	j;
+	 int	count;
+
+	 i = 0;
+	 j = 0;
+	 while (size(stack->b) >= 5)
+	 {
+	 	count = size(stack->b)/2;
+	 while (stack->b && count != 0)
+	 {
+	 	if (high_index(stack->b, stack->b->data) < count)
+	 	{
+	 		pa(stack);
+	 		count--;
+	 		// ra(stack);
+	 		// rb(stack);
+	 		i++;
+	 	}
+	 	else
+	 	{
+	 		rb(stack);
+	 		j++;
+	 	}
+	 }
+	}
+	 
+	 while (i > 0)
+	 {
+	 	// printf("i is %d\n", i);
+	 	// rra(stack);
+	 	pb(stack);
+	 	i--;
+	 }
+	 // printf("b stack size is: %d\n", size(stack->b));
 }
 
 void	b_to_a_tail(t_stack *stack)
@@ -149,6 +148,8 @@ void	b_to_a_tail(t_stack *stack)
 			while (stack->b && stack->b->data != big(stack->b))
 				rb(stack);
 			pa(stack);
+			if (stack->a->data > stack->a->next->data)
+				sa(stack);
 			i--;
 		}
 		if (index_in_list(stack->b, big(stack->b)) > i)
@@ -156,16 +157,13 @@ void	b_to_a_tail(t_stack *stack)
 			while (stack->b && stack->b->data != big(stack->b))
 				rrb(stack);
 			pa(stack);
+			if (stack->a->data > stack->a->next->data)
+				sa(stack);
 			i--;
 		}
 		else //while (stack->b && stack->b->data != big(stack->b))
 				rb(stack);
-			//pa(stack);
-		// printf(" I is %d\n", i);
-	 // 	printf(" stack a is: ");  //test
-		// print_list(stack->a);  //test
-	 // 	printf(" stack b is: ");  //test
-		// print_list(stack->b);  //test
+			// pa(stack);
 	}
 }
 
@@ -222,3 +220,45 @@ int		find_mid(t_list *list)
 	i = i / n;
 	return (i);
 }
+
+// void	b_to_a(t_stack *stack)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	// printf("Stack count is %d\n", stack->count); 
+// 	// printf("Stack b has %d elements\n", size(stack->b)); 
+// 	// printf("I'm here\n");  //test
+// 	while (size(stack->b) >= stack->count/2)
+// 	{
+// 		if (stack->b->data == big(stack->b))
+// 		{
+// 			pa(stack);
+// 			while (last(stack->b))
+// 			{
+// 				rrb(stack);
+// 				i--;
+// 			}
+// 		}
+// 		else
+// 		{
+// 		 	rb(stack);
+// 		 	i++;
+// 		}
+// 		if (last(stack->b) == big(stack->b))
+// 		{
+// 			rrb(stack);
+// 			pa(stack);
+// 		}
+// 		// if (stack->b->data == second_big(stack->b) && flag == 0)
+// 		// {
+// 		// // printf("its  second big here: %d\n", stack->a->data);
+// 		// 	pa(stack);
+// 		// 	flag = 0
+// 		// 	if (stack->a->data > stack->a->next->data)
+// 		// 		sb(stack);
+// 		// }
+// 		// else
+// 		// 	rb(stack);
+// 	}
+// }
