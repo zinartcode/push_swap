@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 17:02:38 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/05 16:57:21 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/07 21:11:25 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,14 @@ void	print_list(t_list *list)
     t_list *current;
 
     current = list;
-    while (current != NULL)
+    if (list)
     {
-        printf("%d ", current->data);
-        current = current->next;
-    }
+  		while (current != NULL)
+    	{
+     	   printf("%d ", current->data);
+     	   current = current->next;
+		}
+	}
     printf("\n");
 }
 
@@ -78,3 +81,7 @@ void			free_list(t_list **list)
 		temp = temp2;
 	}
 }
+
+
+
+

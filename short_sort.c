@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 16:57:20 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/06 20:44:30 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/07 20:19:15 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 void	short_sort(t_stack *stack)
 {
-	if (stack->count <= 3)
+	// printf("stack count is: %d\n", stack->count);  //test
+	// printf("stack size is: %d\n", size(stack->a));  //test
+	if (size(stack->a) <= 3)
 	{
-		if (stack->count == 2)
+		if (size(stack->a) == 2)
 		{
 			if (stack->a->data > stack->a->next->data)
 				sa(stack);
@@ -24,7 +26,7 @@ void	short_sort(t_stack *stack)
 		else
 			sort_three(stack);
 	}
-	else if (stack->count <= 5)
+	else if (size(stack->a) <= 5)
 		sort_five(stack);
 	else
 		ft_error(&stack->a);
@@ -32,8 +34,10 @@ void	short_sort(t_stack *stack)
 
 void	sort_three(t_stack *stack)
 {
-	if (is_sorted(stack->a))
+	if (size(stack->a) == 3)
 	{
+	// printf(" stack a in sort three is: ");
+	print_list(stack->a);  //test
 		if (stack->a->data == sml(stack->a) && stack->a->next->data == big(stack->a))
 		{
 			rra(stack);
@@ -53,6 +57,10 @@ void	sort_three(t_stack *stack)
 		}
 		else
 			rra(stack);
+		// printf("after sort_three stack b in short is: ");  //test
+		// print_list(stack->b);  //test
+		// printf(" stack a in short is: ");  //test
+		// print_list(stack->a);  //test
 	}
 }
 
@@ -81,26 +89,32 @@ int	sort_five(t_stack *stack)
 	int	i;
 
 	i = 0;
-	while (i < 2) //&& size(stack->a) > 3
+	if (size(stack->a) <= 5)
 	{
-		if (sml(stack->a) == stack->a->data)
+	// 		printf(" stack a in sort five is: ");
+	// print_list(stack->a);  //test
+		while (i < 2) //&& size(stack->a) > 3
 		{
-			pb(stack);
-			i++;
+			if (sml(stack->a) == stack->a->data)
+			{
+				pb(stack);
+				i++;
+			}
+			else if (sml(stack->a) == last(stack->a))
+			{
+				rra(stack);
+				pb(stack);
+				i++;
+			}
+			else
+				while (sml(stack->a) != stack->a->data)
+					ra(stack);
 		}
-		else if (sml(stack->a) == last(stack->a))
-		{
-			rra(stack);
-			pb(stack);
-			i++;
-		}
-		else
-			while (sml(stack->a) != stack->a->data)
-				ra(stack);
+		// sort_three(stack);
+		short_sort(stack);
+		pa(stack);
+		pa(stack);
 	}
-	sort_three(stack);
-	pa(stack);
-	pa(stack);
 		// printf(" stack b in short is: ");  //test
 		// print_list(stack->b);  //test
 		// printf(" stack a in short is: ");  //test

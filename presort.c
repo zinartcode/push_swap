@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 23:56:10 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/06 19:12:36 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/07 21:16:38 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ void	presort_a(t_stack *stack)
 	 int	i;
 	 int	count;
 
+	 while (size(stack->a) >= 5)
+	 {
 	 count = size(stack->a)/2;
+	 // printf("stack size is: %d\n", stack->count);
 	 while (stack->a && count != 0)
 	 {
 	 	if (low_index(stack->a, stack->a->data) < count)
@@ -64,6 +67,7 @@ void	presort_a(t_stack *stack)
 	 	else
 	 		ra(stack);
 	 }
+	}
 	 // printf("b stack size is: %d\n", size(stack->b));
 }
 
@@ -74,17 +78,34 @@ void	b_to_a_head(t_stack *stack)
 	i = 0;
 	while (size(stack->b) > stack->count/2)
 	{
+	while (index_in_list(stack->b, big(stack->b)) < size(stack->b)/2)
+	{
+		if(stack->b->data < stack->b->next->data)
+			sb(stack);
 		while (stack->b->data != big(stack->b))
 		{
 			rb(stack);
 			i++;
 		}
 		pa(stack);
+	}
+	// printf("sbig index is: %d\n", index_in_list(stack->b, big(stack->b)));
+	// printf("stack b size is: %d\n", size(stack->b));
+	// print_list(stack->b);
 		while (i > 0)
 		{
 			// printf("I is %d\n", i);
 			if (stack->b->data == big(stack->b))
 				pa(stack);
+			if (index_in_list(stack->b, big(stack->b)) < size(stack->b)/2)
+			{
+				while (stack->b->data != big(stack->b))
+				{
+					rb(stack);
+					i++;
+				}
+				pa(stack);
+			}
 			if (stack->a->data > stack->a->next->data)
 				sa(stack);
 			else
@@ -135,35 +156,121 @@ void	presort_b(t_stack *stack)
 	 // printf("b stack size is: %d\n", size(stack->b));
 }
 
+// void	b_to_a_tail(t_stack *stack)
+// {
+// 	int	i;
+
+// 	i = stack->count/4;
+// 	while (stack->b)
+// 	{
+// 		if (index_in_list(stack->b, big(stack->b)) < i)
+// 		{
+// 			while (stack->b && stack->b->data != big(stack->b))
+// 				rb(stack);
+// 			pa(stack);
+// 			if (stack->a->data > stack->a->next->data)
+// 				sa(stack);
+// 			i--;
+// 		}
+// 		if (index_in_list(stack->b, big(stack->b)) > i)
+// 		{
+// 			while (stack->b && stack->b->data != big(stack->b))
+// 				rrb(stack);
+// 			pa(stack);
+// 			if (stack->a->data > stack->a->next->data)
+// 				sa(stack);
+// 			i--;
+// 		}
+// 		else //while (stack->b && stack->b->data != big(stack->b))
+// 				rb(stack);
+// 			// pa(stack);
+// 	}
+// }
+
 void	b_to_a_tail(t_stack *stack)
 {
 	int	i;
 
-	i = stack->count/4;
-	// printf(" I is %d\n", i);
+	i = 0;
 	while (stack->b)
 	{
-		if (index_in_list(stack->b, big(stack->b)) < i)
+		while (index_in_list(stack->b, big(stack->b)) < size(stack->b)/2)
 		{
-			while (stack->b && stack->b->data != big(stack->b))
+			if(stack->b->data < stack->b->next->data)
+				sb(stack);
+			while (stack->b->data != big(stack->b))
+			{
 				rb(stack);
-			pa(stack);
-			if (stack->a->data > stack->a->next->data)
-				sa(stack);
-			i--;
+				i++;
+			}
+			pa(stack);	
 		}
-		if (index_in_list(stack->b, big(stack->b)) > i)
+		// printf("stack b size is: %d\n", size(stack->b));
+	// printf("sbig index is: %d\n", index_in_list(stack->b, big(stack->b)));
+		if (index_in_list(stack->b, big(stack->b)) > size(stack->b)/2)
 		{
-			while (stack->b && stack->b->data != big(stack->b))
+			// printf("stack b size is: %d\n", size(stack->b));
+			while (stack->b->data != big(stack->b))
+			{
 				rrb(stack);
+				i--;
+			}
 			pa(stack);
+			// printf("I'm here I is %d\n", i);
+		}
+		while (i > 0 && size(stack->b) > 3)
+		{
+			if (stack->b->data == big(stack->b))
+				pa(stack);
+			if (index_in_list(stack->b, big(stack->b)) <= size(stack->b)/2)
+			{
+				while (stack->b->data != big(stack->b))
+				{
+					rb(stack);
+					i++;
+				}
+				pa(stack);
+			}
 			if (stack->a->data > stack->a->next->data)
 				sa(stack);
-			i--;
+			else
+			{
+				rrb(stack);
+				i--;
+			}
 		}
-		else //while (stack->b && stack->b->data != big(stack->b))
-				rb(stack);
-			// pa(stack);
+		if (size(stack->b) <= 3)
+		{
+			if (size(stack->b) == 3)
+			{
+				if (stack->b->data == big(stack->b))
+					pa(stack);
+				else if (stack->b->next->data == big(stack->b))
+				{
+					rb(stack);
+					pa(stack);
+				}
+				else
+				{
+					rrb(stack);
+					pa(stack);
+				}
+			}
+			if (size(stack->b) == 2)
+			{
+				if (stack->b->data > stack->b->next->data)
+				{
+					pa(stack);
+					pa(stack);
+				}
+				else
+				{
+					rrb(stack);
+					pa(stack);
+					pa(stack);
+				}
+			}
+		}
 	}
 }
 

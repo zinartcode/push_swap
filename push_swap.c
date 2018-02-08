@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 21:58:49 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/06 20:47:52 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/07 21:17:24 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,23 @@ int	main(int ac, char **av)
 		short_sort(stack);
 	else if (stack->count > 5)
 	{
-	print_list(stack->a);  //test
-		while (size(stack->a) >= 5)
-			presort_a(stack);
-		sort_five(stack);
+		print_list(stack->a);  //test
+		presort_a(stack);
+		short_sort(stack);
+				// printf("after short sort stack b in short is: ");  //test
+				// print_list(stack->b);  //test
+				// printf(" stack a is: ");  //test
+				// print_list(stack->a);  //test
 		b_to_a_head(stack);
+		// 		printf("after b_to_a_head stack b in short is: ");  //test
+		// 		print_list(stack->b);  //test
+		// 		printf(" stack a is: ");  //test
+		// 		print_list(stack->a);  //test
 		presort_b(stack);
+		// 		printf("after presort_b stack b in short is: ");  //test
+		// 		print_list(stack->b);  //test
+		// 		printf(" stack a is: ");  //test
+		// 		print_list(stack->a);  //test
 		b_to_a_tail(stack);
 	}
 	if (is_sorted(stack->a))
