@@ -6,44 +6,11 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 17:02:38 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/07 21:11:25 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/08 00:38:18 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void		run_multinum(int ac, char *av, t_stack *stack)
-{
-	int		i;
-	int		j;
-	int		count;
-	char	*tmp;
-
-	j = 0;
-	count = 0;
-	i = 0;
-	while (i <= ft_strlen(av))
-	{
-		while (av[i] && av[i] == ' ')
-			i++;
-		if (ft_isdigit(av[i]) || (av[i] == '-' && ft_isdigit(av[i + 1])))
-		{
-			while(av[i] != '\0' && av[i] != ' ')
-			{
-				count++;
-				i++;
-			}
-			j = i - count;
-			tmp = ft_strndup(&av[j], count);
-			count = 0;
-			if (check_int(tmp))
-				ls_push_back(stack, ft_atoi(tmp));
-			else
-				ft_error(&stack->a);
-		}
-		i++;
-	}
-}
 
 void	print_list(t_list *list)
 {

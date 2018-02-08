@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 21:58:49 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/07 21:17:24 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/07 23:09:42 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,5 @@ void	init_stack(t_stack *stack)
 	stack->a = NULL;
 	stack->count = 0;
 	stack->is_push = 1;
+	stack->i = 0;
 }

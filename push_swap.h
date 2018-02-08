@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 22:02:04 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/06 19:08:01 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/08 00:27:04 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct	s_stack
 	t_list	*b;
 	int		count;
 	int		is_push;
+	int		i;
 }				t_stack;
 
 int				is_num(char *str);
@@ -31,14 +32,13 @@ int				second_sml(t_list *list);
 int				big(t_list *list);
 int				second_big(t_list *list);
 int				last(t_list *list);
-int				find_mid(t_list *list);
 int				low_index(t_list *list, int nbr);
 int				high_index(t_list *list, int nbr);
 int				index_in_list(t_list *list, int n);
 int				check_int(char *str);
 int				is_double(t_list *list, int nbr);
-void			check_head(t_stack *stack);
-void			check_tail(t_stack *stack);
+void			check_head_a(t_stack *stack);
+void			check_head_b(t_stack *stack);
 void			init_stack(t_stack *stack);
 void			ls_push_back(t_stack *stack, int nbr);
 t_list			*ft_create_elem(int nbr);
@@ -51,11 +51,14 @@ int				is_sorted(t_list *list);
 void			short_sort(t_stack *stack);
 void			sort_three(t_stack *stack);
 int				sort_five(t_stack *stack);
+void			shift_b_back(t_stack *stack);
 void			presort_a(t_stack *stack);
 void			presort_b(t_stack *stack);
 void			long_sort(t_stack *stack);
 void			b_to_a_head(t_stack *stack);
 void			b_to_a_tail(t_stack *stack);
+void			ft_tail1(t_stack *stack);
+void			ft_tail2(t_stack *stack);
 void			sa(t_stack *stack);
 void			sb(t_stack *stack);
 void			ss(t_stack *stack);

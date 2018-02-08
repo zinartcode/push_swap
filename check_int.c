@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 23:11:24 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/01/30 20:50:48 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/08 00:37:22 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,39 @@ int	is_multinum(char *str)
 		return (1);
 	else
 		return (0);
+}
+
+void		run_multinum(int ac, char *av, t_stack *stack)
+{
+	int		i;
+	int		j;
+	int		count;
+	char	*tmp;
+
+	j = 0;
+	count = 0;
+	i = 0;
+	while (i <= ft_strlen(av))
+	{
+		while (av[i] && av[i] == ' ')
+			i++;
+		if (ft_isdigit(av[i]) || (av[i] == '-' && ft_isdigit(av[i + 1])))
+		{
+			while(av[i] != '\0' && av[i] != ' ')
+			{
+				count++;
+				i++;
+			}
+			j = i - count;
+			tmp = ft_strndup(&av[j], count);
+			count = 0;
+			if (check_int(tmp))
+				ls_push_back(stack, ft_atoi(tmp));
+			else
+				ft_error(&stack->a);
+		}
+		i++;
+	}
 }
 
 int	check_int(char *str)
