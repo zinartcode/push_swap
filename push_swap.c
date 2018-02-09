@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 21:58:49 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/07 23:09:42 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/08 19:23:16 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ int	main(int ac, char **av)
 			run_multinum(ac, av[i], stack);
 		else
 			ft_error(&stack->a);
+	}
+	if (is_sorted(stack->a))
+	{
+		printf("stack a is sorted ");  //test
+		free_list(&stack->a);
+		return (0);
 	}
 	printf("Stack has %d elements\n", stack->count);  //test
 	printf("stack a is: ");  //test
@@ -81,4 +87,5 @@ void	init_stack(t_stack *stack)
 	stack->count = 0;
 	stack->is_push = 1;
 	stack->i = 0;
+	stack->temp = 0;
 }

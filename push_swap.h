@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 22:02:04 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/08 00:27:04 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/08 19:00:07 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct	s_stack
 	int		count;
 	int		is_push;
 	int		i;
+	int		temp;
 }				t_stack;
 
 int				is_num(char *str);
@@ -39,6 +40,7 @@ int				check_int(char *str);
 int				is_double(t_list *list, int nbr);
 void			check_head_a(t_stack *stack);
 void			check_head_b(t_stack *stack);
+void			check_big(t_stack *stack);
 void			init_stack(t_stack *stack);
 void			ls_push_back(t_stack *stack, int nbr);
 t_list			*ft_create_elem(int nbr);
