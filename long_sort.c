@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 17:12:32 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/08 19:05:59 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/12 16:15:11 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -17,19 +17,36 @@ void	b_to_a_head(t_stack *stack)
 	{
 		while (index_in_list(stack->b, big(stack->b)) < size(stack->b)/2)
 			check_big(stack);
+	printf("\n after checkbig stack b is: ");  //test
+	print_list(stack->b);  //test
 		shift_b_back(stack);
+	printf(" stack a is: ");  //test
+	print_list(stack->a);  //test
+	printf("\nstack b is: ");  //test
+	print_list(stack->b);  //test
 	}
 	stack->i = 0;
+	// if (stack->b->data < stack->a->data)
+	// 	pa(stack);
+	// while (last(stack->a) < stack->a->data)
+	// 	rra(stack);
 }
 
 void	check_big(t_stack *stack)
 {
+	int i = stack->pivot; //test
+
 	stack->temp = second_big(stack->b);
-	check_head_b(stack);
-	while (stack->b->data != big(stack->b))
+	while (stack->b->data != big(stack->b)) // && low_index(stack->b, stack->b->data) > i)
 	{
 		if (stack->b->data == stack->temp)
 			pa(stack);
+		// if (low_index(stack->b, stack->b->data) == i)
+		// {
+		// 	printf("data %d low index is: %d\n",stack->b->data, low_index(stack->b, stack->b->data));
+		// 	// pa(stack);
+		// 	// ra(stack);
+		// }
 		else
 		{
 			rb(stack);
