@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 21:58:49 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/12 22:10:32 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/12 22:31:58 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	main(int ac, char **av)
 		// 		print_list(stack->b);  //test
 		// 		printf(" stack a is: ");  //test
 		// 		print_list(stack->a);  //test
-		b_to_a_tail(stack);
+		// b_to_a_tail(stack);
 	}
 	if (is_sorted(stack->a))
 	{
@@ -75,7 +75,7 @@ int	main(int ac, char **av)
 		printf(" stack a is: ");  //test
 		print_list(stack->a);  //test
 	}
-	printf("stack b is: ");  //test
+	printf("\nstack b is: ");  //test
 	print_list(stack->b);  //test
 	free_list(&stack->a);
 	free_list(&stack->b);
