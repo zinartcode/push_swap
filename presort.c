@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 23:56:10 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/12 22:07:57 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/12 23:03:14 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	presort_a(t_stack *stack)
 			}
 			else
 				ra(stack);
-		 }
+		}
 	}
 }
 
@@ -74,12 +74,16 @@ void	presort_b(t_stack *stack)
 {
 	int	i;
 	int	count;
+	int	pivot;
 
+	pivot = size(stack->b)/2;
 	i = 0;
+	count = size(stack->b)/4;
 	while (size(stack->b) >= 5)
 	{
-		count = size(stack->b)/2;
-		while (stack->b && count != 0)
+		count = size(stack->b)/4;
+		printf("count is: %d\n", count);
+		if (stack->b && count != 0)
 		{
 			if (high_index(stack->b, stack->b->data) < count)
 			{
@@ -87,13 +91,19 @@ void	presort_b(t_stack *stack)
 				count--;
 				i++;
 			}
+			else if (stack->b->data == sml(stack->b))
+			{
+				pa(stack);
+				ra(stack);
+				count--;
+			}
 			else
 				rb(stack);
 		}
 	}
-	while (i > 0)
-	{
-		pb(stack);
-		i--;
-	}
+	// while (i > 0)
+	// {
+		// pb(stack);
+	// 	i--;
+	// }
 }
