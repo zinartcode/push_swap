@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 16:57:20 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/07 20:19:15 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/12 19:24:17 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	sort_three(t_stack *stack)
 	if (size(stack->a) == 3)
 	{
 	// printf(" stack a in sort three is: ");
-	print_list(stack->a);  //test
+	// print_list(stack->a);  //test
 		if (stack->a->data == sml(stack->a) && stack->a->next->data == big(stack->a))
 		{
 			rra(stack);

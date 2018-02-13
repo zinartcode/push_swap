@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 23:56:10 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/08 00:38:07 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/12 22:07:57 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,12 @@ void	presort_a(t_stack *stack)
 {
 	int	i;
 	int	count;
+	stack->pivot = size(stack->a)/2;
 
 	while (size(stack->a) >= 5)
 	{
 		count = size(stack->a)/2;
-		while (stack->a && count != 0)
+		while (stack->a && count != 0)	 //size(stack->a) != 5
 		{
 			if (low_index(stack->a, stack->a->data) < count)
 			{
