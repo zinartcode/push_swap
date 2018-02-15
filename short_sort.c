@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 16:57:20 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/12 19:24:17 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/15 15:45:54 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	short_sort(t_stack *stack)
 
 void	sort_three(t_stack *stack)
 {
-	if (size(stack->a) == 3)
+	if (size(stack->a) == 3 && is_sorted(stack->a) == 0)
 	{
 	// printf(" stack a in sort three is: ");
 	// print_list(stack->a);  //test

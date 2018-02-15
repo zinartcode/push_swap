@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 17:12:32 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/14 21:22:22 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/15 15:26:25 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -32,11 +32,11 @@ void	check_big(t_stack *stack)
 	while (stack->b->data != big(stack->b))
 	{
 		// printf("data %d low index is: %d, pivot is %d\n",stack->b->data, low_index(stack->b, stack->b->data), stack->pivot);
-		if (low_index(stack->b, stack->b->data) == i)
-		{
-			pa(stack);
-			ra(stack);
-		}
+		// if (low_index(stack->b, stack->b->data) == i)
+		// {
+		// 	pa(stack);
+		// 	ra(stack);
+		// }
 		if (stack->b->data == stack->temp)
 			pa(stack);
 		else
@@ -80,6 +80,8 @@ void	b_to_a_tail(t_stack *stack)
 		pa(stack);
 		pa(stack);
 	}
+		// while (last(stack->a) < stack->a->data)
+		// rra(stack);
 }
 
 // void	b_to_a_tail(t_stack *stack)
