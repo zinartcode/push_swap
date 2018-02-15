@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 23:56:10 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/12 23:03:14 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/15 00:52:55 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	presort_b(t_stack *stack)
 	while (size(stack->b) >= 5)
 	{
 		count = size(stack->b)/4;
-		printf("count is: %d\n", count);
+		// printf("count is: %d\n", count);
 		if (stack->b && count != 0)
 		{
 			if (high_index(stack->b, stack->b->data) < count)
@@ -96,14 +96,64 @@ void	presort_b(t_stack *stack)
 				pa(stack);
 				ra(stack);
 				count--;
+				stack->i++;
 			}
 			else
 				rb(stack);
 		}
 	}
-	// while (i > 0)
-	// {
-		// pb(stack);
-	// 	i--;
-	// }
+	b_to_a(stack);
+	b_to_a2(stack, i);
+	b_to_a_tail(stack);
+	while (is_sorted(stack->a) == 0)
+		rra(stack);
+}
+
+void	b_to_a2(t_stack *stack, int i)
+{
+	int	*array;
+	int	temp;
+
+	array = list_to_array(stack->a, stack->count);
+	while (i > 1)
+	{
+		if (stack->a->data > stack->a->next->data)
+			sa(stack);
+		if (low_index(stack->a, stack->a->data) == stack->i)
+		{
+			if (low_in_array(array, stack->a->data) == stack->i)
+			{
+				ra(stack);
+				stack->i++;
+				i--;
+			}
+			else
+			{
+				pb(stack);
+				i--;
+			}
+		}
+		else
+		{
+			pb(stack);
+			i--;
+		}
+
+	}
+	free(array);
+}
+
+void	b_to_a(t_stack *stack)
+{
+	while (stack->b)
+	{
+		if (stack->b->data == sml(stack->b))
+		{
+			pa(stack);
+			ra(stack);
+			stack->i++;
+		}
+		else
+			rb(stack);
+	}
 }
