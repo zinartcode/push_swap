@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 22:02:04 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/12 14:04:43 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/15 00:35:47 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,10 @@ void			rr(t_stack *stack);
 void			rra(t_stack *stack);
 void			rrb(t_stack *stack);
 void			rrr(t_stack *stack);
+
+void			b_to_a(t_stack *stack);
+void			b_to_a2(t_stack *stack, int i);
+int				*list_to_array(t_list *list, int size);
+int				low_in_array(int *arr, int nbr);
 
 #endif
