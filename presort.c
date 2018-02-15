@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 23:56:10 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/15 00:52:55 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/15 15:49:06 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	presort_b(t_stack *stack)
 
 	pivot = size(stack->b)/2;
 	i = 0;
-	count = size(stack->b)/4;
 	while (size(stack->b) >= 5)
 	{
 		count = size(stack->b)/4;
@@ -105,8 +104,12 @@ void	presort_b(t_stack *stack)
 	b_to_a(stack);
 	b_to_a2(stack, i);
 	b_to_a_tail(stack);
-	while (is_sorted(stack->a) == 0)
+	while (is_sorted(stack->a) == 0 && last(stack->a) < stack->a->data)
+	{
 		rra(stack);
+		// 		printf("stac a is: ");
+		// print_list(stack->a);  //test
+	}
 }
 
 void	b_to_a2(t_stack *stack, int i)
