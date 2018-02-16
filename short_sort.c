@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 16:57:20 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/15 15:45:54 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/15 23:21:07 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	short_sort(t_stack *stack)
 {
-	// printf("stack count is: %d\n", stack->count);  //test
-	// printf("stack size is: %d\n", size(stack->a));  //test
 	if (size(stack->a) <= 3)
 	{
 		if (size(stack->a) == 2)
@@ -36,8 +34,6 @@ void	sort_three(t_stack *stack)
 {
 	if (size(stack->a) == 3 && is_sorted(stack->a) == 0)
 	{
-	// printf(" stack a in sort three is: ");
-	// print_list(stack->a);  //test
 		if (stack->a->data == sml(stack->a) && stack->a->next->data == big(stack->a))
 		{
 			rra(stack);
@@ -57,10 +53,6 @@ void	sort_three(t_stack *stack)
 		}
 		else
 			rra(stack);
-		// printf("after sort_three stack b in short is: ");  //test
-		// print_list(stack->b);  //test
-		// printf(" stack a in short is: ");  //test
-		// print_list(stack->a);  //test
 	}
 }
 
@@ -91,9 +83,7 @@ int	sort_five(t_stack *stack)
 	i = 0;
 	if (size(stack->a) <= 5)
 	{
-	// 		printf(" stack a in sort five is: ");
-	// print_list(stack->a);  //test
-		while (i < 2) //&& size(stack->a) > 3
+		while (i < 2)
 		{
 			if (sml(stack->a) == stack->a->data)
 			{
@@ -110,15 +100,10 @@ int	sort_five(t_stack *stack)
 				while (sml(stack->a) != stack->a->data)
 					ra(stack);
 		}
-		// sort_three(stack);
 		short_sort(stack);
 		pa(stack);
 		pa(stack);
 	}
-		// printf(" stack b in short is: ");  //test
-		// print_list(stack->b);  //test
-		// printf(" stack a in short is: ");  //test
-		// print_list(stack->a);  //test
 	return (0);
 }
 
