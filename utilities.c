@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 17:02:38 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/15 00:37:53 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/19 13:36:05 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int		*list_to_array(t_list *list, int size)
 	return (array);
 }
 
-int	low_in_array(int *arr, int nbr)
+int	low_in_array(int *arr, int nbr, int size)
 {
 	int	i;
 	int	j;
@@ -77,14 +77,14 @@ int	low_in_array(int *arr, int nbr)
 	j = 0;
 	i = 0;
 
-	while (arr[i])
+	while (size > 0)
 	{
-		if (nbr > arr[i])
+		if (nbr >= arr[i])
 			j++;
 		i++;
+		size--;
 	}
 	return (j);
 }
-
 
 

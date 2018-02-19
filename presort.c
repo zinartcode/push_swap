@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 23:56:10 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/15 15:49:06 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/19 13:35:51 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,29 +102,29 @@ void	presort_b(t_stack *stack)
 		}
 	}
 	b_to_a(stack);
+	printf("i is: %d\n", stack->i);
 	b_to_a2(stack, i);
 	b_to_a_tail(stack);
-	while (is_sorted(stack->a) == 0 && last(stack->a) < stack->a->data)
-	{
-		rra(stack);
-		// 		printf("stac a is: ");
-		// print_list(stack->a);  //test
-	}
+	// while (is_sorted(stack->a) == 0 && last(stack->a) < stack->a->data)
+	// {
+	// 	rra(stack);
+	// 	// 		printf("stac a is: ");
+	// 	// print_list(stack->a);  //test
+	// }
 }
 
 void	b_to_a2(t_stack *stack, int i)
 {
 	int	*array;
 	int	temp;
-
 	array = list_to_array(stack->a, stack->count);
 	while (i > 1)
 	{
 		if (stack->a->data > stack->a->next->data)
 			sa(stack);
-		if (low_index(stack->a, stack->a->data) == stack->i)
-		{
-			if (low_in_array(array, stack->a->data) == stack->i)
+		// if (low_index(stack->a, stack->a->data) == stack->i)
+		// {
+			if (low_in_array(array, stack->a->data, stack->count) == stack->i)
 			{
 				ra(stack);
 				stack->i++;
@@ -135,12 +135,12 @@ void	b_to_a2(t_stack *stack, int i)
 				pb(stack);
 				i--;
 			}
-		}
-		else
-		{
-			pb(stack);
-			i--;
-		}
+		// }
+		// else
+		// {
+		// 	pb(stack);
+		// 	i--;
+		// }
 
 	}
 	free(array);
