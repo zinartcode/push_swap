@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 21:58:49 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/15 17:44:46 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/18 22:01:39 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int	main(int ac, char **av)
 	{
 		presort_a(stack);
 		short_sort(stack);
+		b_to_a_head(stack);
+		presort_b(stack);
 	}
 	if (is_sorted(stack->a))
 	{

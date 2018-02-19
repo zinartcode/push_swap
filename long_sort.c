@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 17:12:32 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/15 16:31:56 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/18 21:53:05 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -55,13 +55,42 @@ void	shift_b_back(t_stack *stack)
 	}
 }
 
+// void	b_to_a_tail(t_stack *stack)
+// {
+// 	while (size(stack->b) > 3)
+// 	{
+// 		while (index_in_list(stack->b, big(stack->b)) < size(stack->b)/2)
+// 			check_big(stack);
+// 		shift_b_back(stack);
+// 	}
+// 	if (size(stack->b) <= 3)
+// 	{
+// 		if (stack->b && last(stack->b) == big(stack->b))
+// 			rrb(stack);
+// 		while (stack->b && stack->b->data != big(stack->b))
+// 			rb(stack);
+// 		pa(stack);
+// 		pa(stack);
+// 	}
+// 		while (last(stack->a) < stack->a->data)
+// 		rra(stack);
+// }
+
 void	b_to_a_tail(t_stack *stack)
 {
+	// b_to_a(stack);
+	// b_to_a2(stack);
 	while (size(stack->b) > 3)
 	{
 		while (index_in_list(stack->b, big(stack->b)) < size(stack->b)/2)
 			check_big(stack);
+		if (stack->b && stack->i > 0)
 		shift_b_back(stack);
+		else
+		{
+			while (index_in_list(stack->b, big(stack->b)) > size(stack->b)/2)
+				rrb(stack);	
+		}
 	}
 	if (size(stack->b) <= 3)
 	{
@@ -72,8 +101,8 @@ void	b_to_a_tail(t_stack *stack)
 		pa(stack);
 		pa(stack);
 	}
-		// while (last(stack->a) < stack->a->data)
-		// rra(stack);
+	while (is_sorted(stack->a) == 0 && last(stack->a) < stack->a->data)
+		rra(stack);
 }
 
 // void	b_to_a_tail(t_stack *stack)
