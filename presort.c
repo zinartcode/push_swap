@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 23:56:10 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/19 13:35:51 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/19 13:43:06 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ void	presort_b(t_stack *stack)
 		}
 	}
 	b_to_a(stack);
-	printf("i is: %d\n", stack->i);
 	b_to_a2(stack, i);
 	b_to_a_tail(stack);
 	// while (is_sorted(stack->a) == 0 && last(stack->a) < stack->a->data)
