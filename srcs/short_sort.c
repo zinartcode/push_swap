@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 16:57:20 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/15 23:21:07 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/19 23:36:22 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,26 +55,6 @@ void	sort_three(t_stack *stack)
 			rra(stack);
 	}
 }
-
-// int	sort_five(t_stack *stack)
-// {
-// 	while (size(stack->a) > 3)
-// 	{
-// 		if (sml(stack->a) == stack->a->data)
-// 			pb(stack);
-// 		else if (sml(stack->a) == last(stack->a))
-// 		{
-// 			rra(stack);
-// 			pb(stack);
-// 		}
-// 		else while (sml(stack->a) != stack->a->data)
-// 			ra(stack);	
-// 	}
-// 	sort_three(stack);
-// 	pa(stack);
-// 	pa(stack);
-// 	return (0);
-// }
 
 int	sort_five(t_stack *stack)
 {

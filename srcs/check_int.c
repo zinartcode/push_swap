@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 23:11:24 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/19 21:55:36 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/19 23:22:32 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,8 @@ int	is_multinum(char *str)
 void			run_multinum(char *av, t_stack *stack)
 {
 	size_t		i;
-	int			j;
-	int			count;
 	char		*tmp;
 
-	j = 0;
-	count = 0;
 	i = 0;
 	while (i <= ft_strlen(av))
 	{
@@ -60,12 +56,12 @@ void			run_multinum(char *av, t_stack *stack)
 		{
 			while(av[i] != '\0' && av[i] != ' ')
 			{
-				count++;
+				stack->pivot++;
 				i++;
 			}
-			j = i - count;
-			tmp = ft_strndup(&av[j], count);
-			count = 0;
+			stack->temp = i - stack->pivot;
+			tmp = ft_strndup(&av[stack->temp], stack->pivot);
+			stack->pivot = 0;
 			if (check_int(tmp))
 				ls_push_back(stack, ft_atoi(tmp));
 			else
