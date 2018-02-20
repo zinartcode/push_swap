@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 21:17:28 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/19 23:02:36 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/19 23:43:20 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,37 @@
 
 int				main(int ac, char **av)
 {
-	int			i;
 	t_stack		*stack;
 	char *str;
 
 	str = NULL;
-	i = 0;
 	stack = malloc(sizeof(t_stack));
 	init_stack(stack);
 	stack->is_push = 0;
 	if (ac == 1)
 		return(0);
+	if (ac >= 2)
+	{
+		if (process_args(ac, av, stack))
+		{
+ 			if (is_sorted(stack->a))
+				ft_putstr("OK\n");
+			else
+				ft_putstr("KO\n");
+		}
+	}
+	free_list(&stack->a);
+	free_list(&stack->b);
+	return (0);
+}
+
+int				process_args(int ac, char **av, t_stack *stack)
+{
+	int			i;
+	char		*str;
+
+	i = 0;
+	str = NULL;
 	while(++i < ac)
 	{
 		if (is_num(av[i]) && check_int(av[i]))
@@ -44,13 +64,7 @@ int				main(int ac, char **av)
 			return (0);
 		}
 	}
-	if (is_sorted(stack->a))
-		ft_putstr("OK\n");
-	else
-		ft_putstr("KO\n");
-	free_list(&stack->a);
-	free_list(&stack->b);
-	return (0);
+	return (1);
 }
 
 int		ft_check(char *str, t_stack *stack)
