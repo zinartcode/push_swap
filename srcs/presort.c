@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 23:56:10 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/19 20:56:58 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/19 22:41:24 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	low_index(t_list *list, int nbr)
 {
 	t_list *temp;
 	int	i;
-	int n;
 
 	temp = list;
 	i = 0;
@@ -34,7 +33,6 @@ int	high_index(t_list *list, int nbr)
 {
 	t_list *temp;
 	int	i;
-	int n;
 
 	temp = list;
 	i = 0;
@@ -50,7 +48,6 @@ int	high_index(t_list *list, int nbr)
 
 void	presort_a(t_stack *stack)
 {
-	int	i;
 	int	count;
 	stack->pivot = size(stack->a)/2;
 
@@ -81,9 +78,7 @@ void	presort_b(t_stack *stack)
 	stack->temp = stack->a->data;
 	while (size(stack->b) >= 5)
 	{
-		// print_list(stack->a);  //test
 		count = size(stack->b)/4;
-		// printf("count is: %d\n", count);
 		if (stack->b && count != 0)
 		{
 			if (high_index(stack->b, stack->b->data) < count)
@@ -124,7 +119,6 @@ void	b_to_a(t_stack *stack)
 
 void	b_to_a2(t_stack *stack, int i)
 {
-	int	temp;
 	stack->i++;
 	while (stack->a->data != stack->temp)
 	{
@@ -144,34 +138,3 @@ void	b_to_a2(t_stack *stack, int i)
 	}
 	check_b_tail(stack);
 }
-
-// void	b_to_a(t_stack *stack)
-// {
-// 	stack->i++;
-
-// 	while (stack->b)
-// 	{
-// 		if (low_in_array(stack->array, stack->b->data, stack->count) == stack->i)
-// 		{
-// 			pa(stack);
-// 			ra(stack);
-// 			stack->i++;
-// 		}
-// 		if (low_in_array(stack->array, last(stack->b), stack->count) == stack->i)
-// 		{
-// 			rrb(stack);
-// 			pa(stack);
-// 			ra(stack);
-// 			stack->i++;
-// 		}
-// 		if (low_in_array(stack->array, stack->a->data, stack->count) == stack->i)
-// 		{
-// 			ra(stack);
-// 			stack->i++;
-// 		}
-// 		else
-// 			rb(stack);
-// 	}
-// 	// while (last(stack->a) < stack->a->data)
-// 	// 	rra(stack);
-// }

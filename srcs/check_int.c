@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 23:11:24 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/08 00:37:22 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/19 21:55:36 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ int	is_multinum(char *str)
 		return (0);
 }
 
-void		run_multinum(int ac, char *av, t_stack *stack)
+void			run_multinum(char *av, t_stack *stack)
 {
-	int		i;
-	int		j;
-	int		count;
-	char	*tmp;
+	size_t		i;
+	int			j;
+	int			count;
+	char		*tmp;
 
 	j = 0;
 	count = 0;

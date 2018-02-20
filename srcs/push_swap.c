@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 21:58:49 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/19 20:48:00 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/19 22:58:13 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,24 @@ int	main(int ac, char **av)
 		if (is_num(av[i]) && check_int(av[i]))
 			ls_push_back(stack, ft_atoi(av[i]));
 		else if (is_multinum(av[i]))
-			run_multinum(ac, av[i], stack);
+			run_multinum(av[i], stack);
 		else
 			ft_error(&stack->a);
 	}
 	if (is_sorted(stack->a))
 	{
-		printf("stack a is sorted ");  //test
-		free_list(&stack->a);
+		// printf("");  //test
+		// free_list(&stack->a);
 		return (0);
 	}
 	stack->array = list_to_array(stack->a, stack->count);
 	bubble_sort(stack->array, stack->count);
-	printf ("Array is: ");
-	print_array(stack->array, stack->count);
+	// printf ("Array is: ");
+	// print_array(stack->array, stack->count);
 
-	printf("Stack has %d elements\n", stack->count);  //test
-	printf("stack a is: ");  //test
-	print_list(stack->a);  //test
+	// printf("Stack has %d elements\n", stack->count);  //test
+	// printf("stack a is: ");  //test
+	// print_list(stack->a);  //test
 	if (stack->count != 1 && stack->count <= 5)
 		short_sort(stack);
 	else if (stack->count > 5)
@@ -72,40 +72,22 @@ int	main(int ac, char **av)
 		// b_to_a2(stack, i);
 		b_to_a_tail(stack);
 	}
-	// else if (stack->count > 300)
+	// if (is_sorted(stack->a))
 	// {
-	// 	presort_a(stack);
-	// 	short_sort(stack);
-	// 	b_to_a_head(stack);
-	// 	presort_b(stack);
+	// 	printf(" Sorted stack a is: ");  //test
+	// 	print_list(stack->a);  //test
 	// }
-	if (is_sorted(stack->a))
-	{
-		printf(" Sorted stack a is: ");  //test
-		print_list(stack->a);  //test
-	}
-	else
-	{
-		printf(" stack a is: ");  //test
-		print_list(stack->a);  //test
-	}
-	printf("Size: %d\n", size(stack->a));
-	printf("stack b is: ");  //test
-	print_list(stack->b);  //test
-	printf("Size: %d\n", size(stack->b));
+	// else
+	// {
+	// 	printf(" stack a is: ");  //test
+	// 	print_list(stack->a);  //test
+	// }
+	// printf("Size: %d\n", size(stack->a));
+	// printf("stack b is: ");  //test
+	// print_list(stack->b);  //test
+	// printf("Size: %d\n", size(stack->b));
 	free_list(&stack->a);
 	free_list(&stack->b);
 	free(stack->array);
 	return (0);
-}
-
-void	init_stack(t_stack *stack)
-{
-	stack->b = NULL;
-	stack->a = NULL;
-	stack->count = 0;
-	stack->is_push = 1;
-	stack->i = 0;
-	stack->temp = 0;
-	stack->pivot = 0;
 }
