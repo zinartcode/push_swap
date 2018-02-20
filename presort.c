@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 23:56:10 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/19 13:43:06 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/19 20:56:58 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	presort_a(t_stack *stack)
 	while (size(stack->a) >= 5)
 	{
 		count = size(stack->a)/2;
-		while (stack->a && count != 0)	 //size(stack->a) != 5
+		while (stack->a && count != 0)
 		{
 			if (low_index(stack->a, stack->a->data) < count)
 			{
@@ -78,8 +78,10 @@ void	presort_b(t_stack *stack)
 
 	pivot = size(stack->b)/2;
 	i = 0;
+	stack->temp = stack->a->data;
 	while (size(stack->b) >= 5)
 	{
+		// print_list(stack->a);  //test
 		count = size(stack->b)/4;
 		// printf("count is: %d\n", count);
 		if (stack->b && count != 0)
@@ -103,46 +105,6 @@ void	presort_b(t_stack *stack)
 	}
 	b_to_a(stack);
 	b_to_a2(stack, i);
-	b_to_a_tail(stack);
-	// while (is_sorted(stack->a) == 0 && last(stack->a) < stack->a->data)
-	// {
-	// 	rra(stack);
-	// 	// 		printf("stac a is: ");
-	// 	// print_list(stack->a);  //test
-	// }
-}
-
-void	b_to_a2(t_stack *stack, int i)
-{
-	int	*array;
-	int	temp;
-	array = list_to_array(stack->a, stack->count);
-	while (i > 1)
-	{
-		if (stack->a->data > stack->a->next->data)
-			sa(stack);
-		// if (low_index(stack->a, stack->a->data) == stack->i)
-		// {
-			if (low_in_array(array, stack->a->data, stack->count) == stack->i)
-			{
-				ra(stack);
-				stack->i++;
-				i--;
-			}
-			else
-			{
-				pb(stack);
-				i--;
-			}
-		// }
-		// else
-		// {
-		// 	pb(stack);
-		// 	i--;
-		// }
-
-	}
-	free(array);
 }
 
 void	b_to_a(t_stack *stack)
@@ -159,3 +121,57 @@ void	b_to_a(t_stack *stack)
 			rb(stack);
 	}
 }
+
+void	b_to_a2(t_stack *stack, int i)
+{
+	int	temp;
+	stack->i++;
+	while (stack->a->data != stack->temp)
+	{
+		if (low_in_array(stack->array, stack->a->next->data, stack->count) == stack->i)
+			sa(stack);
+		if (low_in_array(stack->array, stack->a->data, stack->count) == stack->i)
+		{
+			ra(stack);
+			stack->i++;
+				i--;
+		}
+		else
+		{
+			pb(stack);
+			i--;
+		}
+	}
+	check_b_tail(stack);
+}
+
+// void	b_to_a(t_stack *stack)
+// {
+// 	stack->i++;
+
+// 	while (stack->b)
+// 	{
+// 		if (low_in_array(stack->array, stack->b->data, stack->count) == stack->i)
+// 		{
+// 			pa(stack);
+// 			ra(stack);
+// 			stack->i++;
+// 		}
+// 		if (low_in_array(stack->array, last(stack->b), stack->count) == stack->i)
+// 		{
+// 			rrb(stack);
+// 			pa(stack);
+// 			ra(stack);
+// 			stack->i++;
+// 		}
+// 		if (low_in_array(stack->array, stack->a->data, stack->count) == stack->i)
+// 		{
+// 			ra(stack);
+// 			stack->i++;
+// 		}
+// 		else
+// 			rb(stack);
+// 	}
+// 	// while (last(stack->a) < stack->a->data)
+// 	// 	rra(stack);
+// }

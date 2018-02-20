@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 17:02:38 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/19 13:36:05 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/19 19:46:34 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,42 +49,42 @@ void			free_list(t_list **list)
 	}
 }
 
-int		*list_to_array(t_list *list, int size)
-{
-	int		*array;
-	int		i;
-	t_list	*temp;
+// int		*list_to_array(t_list *list, int size)
+// {
+// 	int		*array;
+// 	int		i;
+// 	t_list	*temp;
 
-	i = 0;
-	if (list == NULL)
-		return (NULL);
-	array = (int*)malloc(sizeof(int) * size + 1);
-	temp = list;
-	while (temp)
-	{
-		array[i] = temp->data;
-		temp = temp->next;
-		i++;
-	}
-	return (array);
-}
+// 	i = 0;
+// 	if (list == NULL)
+// 		return (NULL);
+// 	array = (int*)malloc(sizeof(int) * size + 1);
+// 	temp = list;
+// 	while (temp)
+// 	{
+// 		array[i] = temp->data;
+// 		temp = temp->next;
+// 		i++;
+// 	}
+// 	return (array);
+// }
 
-int	low_in_array(int *arr, int nbr, int size)
-{
-	int	i;
-	int	j;
+// int	low_in_array(int *arr, int nbr, int size)
+// {
+// 	int	i;
+// 	int	j;
 
-	j = 0;
-	i = 0;
+// 	j = 0;
+// 	i = 0;
 
-	while (size > 0)
-	{
-		if (nbr >= arr[i])
-			j++;
-		i++;
-		size--;
-	}
-	return (j);
-}
+// 	while (size > 0)
+// 	{
+// 		if (nbr >= arr[i])
+// 			j++;
+// 		i++;
+// 		size--;
+// 	}
+// 	return (j);
+// }
 
 

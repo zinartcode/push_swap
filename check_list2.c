@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 00:40:05 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/08 00:41:50 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/19 19:06:10 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,15 @@ int		index_in_list(t_list *list, int n)
 	t_list *temp;
 
 	i = 0;
-	temp = NULL;
+	temp = list;
 	if (list)
 	{
-	temp = list;
-	i = 0;
-	while (temp->data != n)
-	{
-		temp = temp->next;
-		i++;
-	}
+		i = 0;
+		while (temp->next != NULL && temp->data != n)
+		{
+			temp = temp->next;
+			i++;
+		}
 	}
 	return (i);
 }
