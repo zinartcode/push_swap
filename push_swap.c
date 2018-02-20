@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 21:58:49 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/18 22:01:39 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/19 20:48:00 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,17 @@ int	main(int ac, char **av)
 		free_list(&stack->a);
 		return (0);
 	}
+	stack->array = list_to_array(stack->a, stack->count);
+	bubble_sort(stack->array, stack->count);
+	printf ("Array is: ");
+	print_array(stack->array, stack->count);
+
 	printf("Stack has %d elements\n", stack->count);  //test
 	printf("stack a is: ");  //test
 	print_list(stack->a);  //test
 	if (stack->count != 1 && stack->count <= 5)
 		short_sort(stack);
-	else if (stack->count < 300)
+	else if (stack->count > 5)
 	{
 		// print_list(stack->a);  //test
 				// stack->is_push = 0;
@@ -63,15 +68,17 @@ int	main(int ac, char **av)
 		// 		print_list(stack->b);  //test
 		// 		printf(" stack a is: ");  //test
 		// 		print_list(stack->a);  //test
-		// b_to_a_tail(stack);
+		// b_to_a(stack);
+		// b_to_a2(stack, i);
+		b_to_a_tail(stack);
 	}
-	else if (stack->count > 300)
-	{
-		presort_a(stack);
-		short_sort(stack);
-		b_to_a_head(stack);
-		presort_b(stack);
-	}
+	// else if (stack->count > 300)
+	// {
+	// 	presort_a(stack);
+	// 	short_sort(stack);
+	// 	b_to_a_head(stack);
+	// 	presort_b(stack);
+	// }
 	if (is_sorted(stack->a))
 	{
 		printf(" Sorted stack a is: ");  //test
@@ -82,10 +89,13 @@ int	main(int ac, char **av)
 		printf(" stack a is: ");  //test
 		print_list(stack->a);  //test
 	}
+	printf("Size: %d\n", size(stack->a));
 	printf("stack b is: ");  //test
 	print_list(stack->b);  //test
+	printf("Size: %d\n", size(stack->b));
 	free_list(&stack->a);
 	free_list(&stack->b);
+	free(stack->array);
 	return (0);
 }
 

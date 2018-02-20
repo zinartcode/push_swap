@@ -6,7 +6,7 @@
 #    By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/23 20:45:15 by azinnatu          #+#    #+#              #
-#    Updated: 2018/02/08 00:42:26 by azinnatu         ###   ########.fr        #
+#    Updated: 2018/02/19 19:46:21 by azinnatu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ OBJS =	push_swap.o \
 		presort.o \
 		short_sort.o \
 		long_sort.o \
+		ft_array_helper.o \
 		create_list.o \
 		check_list.o \
 		check_list2.o
