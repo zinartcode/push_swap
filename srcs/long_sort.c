@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 17:12:32 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/19 20:51:21 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/19 22:55:25 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -22,7 +22,7 @@ void	b_to_a_head(t_stack *stack)
 	stack->i = 0;
 	while (last(stack->a) < stack->a->data)
 		rra(stack);
-	check_b_tail(stack);
+	// check_b_tail(stack);
 }
 
 void check_b_tail(t_stack *stack)
@@ -32,22 +32,20 @@ void check_b_tail(t_stack *stack)
 		while (last(stack->b) == sml(stack->b) || last(stack->b) == big(stack->b)
 		 || stack->b->data == sml(stack->b) || stack->b->data == big(stack->b))
 		{
-		if (stack->b->data == big(stack->b))
-		{
+		if (stack->b && stack->b->data == big(stack->b))
 			pa(stack);
-		}
-		if (last(stack->b) == big(stack->b))
+		if (stack->b && last(stack->b) == big(stack->b))
 		{
 			rrb(stack);
 			pa(stack);
 		}
-		if (stack->b->data == sml(stack->b))
+		if (stack->b && stack->b->data == sml(stack->b))
 		{
 			pa(stack);
 			ra(stack);
 			stack->i++;
 		}
-		if (last(stack->b) == sml(stack->b))
+		if (stack->b && last(stack->b) == sml(stack->b))
 		{
 			rrb(stack);
 			pa(stack);
@@ -79,7 +77,7 @@ void	shift_b_back(t_stack *stack)
 {
 	while (stack->b && stack->i > 0)
 	{
-		if (index_in_list(stack->b, big(stack->b)) < size(stack->b)/2)
+		if (index_in_list(stack->b, big(stack->b)) <= size(stack->b)/2)
 			check_big(stack);
 		else
 		{
@@ -94,7 +92,8 @@ void	b_to_a_tail(t_stack *stack)
 	// check_b_tail(stack);
 	while (size(stack->b) > 3)
 	{
-		while (index_in_list(stack->b, big(stack->b)) < size(stack->b)/2)
+		check_b_tail(stack);
+		while (index_in_list(stack->b, big(stack->b)) <= size(stack->b)/2)
 			check_big(stack);
 		if (stack->b && stack->i > 0)
 		shift_b_back(stack);

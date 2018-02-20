@@ -1,65 +1,50 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/01/23 20:45:15 by azinnatu          #+#    #+#              #
-#    Updated: 2018/02/19 19:46:21 by azinnatu         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+SHARED_SRCS = 	check_int.c	\
+				swap_stack.c \
+				rotate_stack.c \
+				reverse_stack.c	\
+				utilities.c	\
+				presort.c \
+				short_sort.c \
+				long_sort.c \
+				ft_array_helper.c \
+				create_list.c \
+				check_list.c \
+				check_list2.c
 
-OBJS =	push_swap.o \
-		check_int.o	\
-		swap_stack.o \
-		rotate_stack.o \
-		reverse_stack.o	\
-		utilities.o	\
-		presort.o \
-		short_sort.o \
-		long_sort.o \
-		ft_array_helper.o \
-		create_list.o \
-		check_list.o \
-		check_list2.o
+CHECKER_SRCS = checker.c
+PUSH_SWAP_SRCS = push_swap.c \
 
-LIBFT= libft/libft.a
-LIBS = $(LIBFT)
+vpath %.c ./srcs
 
-HEADERS = ft_ls.h ./libft/includes/libft.h
+CC = gcc
+CFLAGS = -c -Wall -Wextra -Werror -g
+CHECKER = checker
+PUSH_SWAP = push_swap
+LIBFT = ./libft/libft.a
 
-CFLAGS +=  -g
+all: $(CHECKER) $(PUSH_SWAP)
 
-NAME = push_swap
+$(CHECKER): $(CHECKER_SRCS:.c=.o) $(SHARED_SRCS:.c=.o) $(LIBFT)
+	$(CC) -o $(CHECKER) $(CHECKER_SRCS:.c=.o) $(SHARED_SRCS:.c=.o) -L $(dir $(LIBFT)) -lft
 
-all: $(NAME)
+$(PUSH_SWAP): $(PUSH_SWAP_SRCS:.c=.o) $(SHARED_SRCS:.c=.o) $(LIBFT)
+	$(CC) -o $(PUSH_SWAP) $(PUSH_SWAP_SRCS:.c=.o) $(SHARED_SRCS:.c=.o) -L $(dir $(LIBFT)) -lft
 
 $(LIBFT):
-	$(MAKE) -C ./libft
+	make -C $(dir $(LIBFT))
 
-$(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME)
+%.o:%.c
+	$(CC) $(CFLAGS) -o $@ $< -I ./includes/ -I $(addsuffix includes/, $(dir $(LIBFT)))
 
-$(OBJ): $(HEADERS)
-
-clean: 
-	# @make -C libft/ fclean
-	rm -f $(OBJS)
+clean:
+	rm -f $(SHARED_SRCS:.c=.o)
+	rm -f $(PUSH_SWAP_SRCS:.c=.o)
+	rm -f $(CHECKER_SRCS:.c=.o)
+	make -C $(dir $(LIBFT)) clean
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(CHECKER)
+	rm -f $(PUSH_SWAP)
+	make -C $(dir $(LIBFT)) fclean
 
 re: fclean all
-
-
-# clean: 
-# 	@make -C libft/ fclean
-# 	rm -f $(OBJS)
-
-# fclean: clean
-# 	rm -f $(NAME)
-
-# re: fclean all
-
-	# -Wall -Wextra -Werror

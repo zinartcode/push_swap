@@ -6,13 +6,13 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 22:02:04 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/19 19:50:00 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/02/19 22:53:41 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include "libft/includes/libft.h"
+# include "libft.h"
 # include <stdio.h>
 # include <stdlib.h>
 
@@ -50,7 +50,7 @@ void			print_list(t_list *list);
 int				ft_error(t_list **list);
 void			free_list(t_list **list);
 int				is_multinum(char *str);
-void			run_multinum(int ac, char *av, t_stack *stack);
+void			run_multinum(char *av, t_stack *stack);
 int				is_sorted(t_list *list);
 void			short_sort(t_stack *stack);
 void			sort_three(t_stack *stack);
@@ -78,6 +78,7 @@ void			rrr(t_stack *stack);
 void			b_to_a(t_stack *stack);
 void			b_to_a2(t_stack *stack, int i);
 void 			check_b_tail(t_stack *stack);
+int				ft_check(char *str, t_stack *stack);
 int				*list_to_array(t_list *list, int size);
 int				low_in_array(int *arr, int nbr, int size);
 void			print_array(int *array, int size);
