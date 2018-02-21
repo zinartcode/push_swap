@@ -87,14 +87,3 @@ void	print_array(int *array, int size)
 	}
 	return;
 }
-
-//  void bubble_sort(int *array, int size)
-// {
-//    int i, j;
-//    for (i = 0; i < size-1; i++)      
- 
-//        // Last i elements are already in place   
-//        for (j = 0; j < size-i-1; j++) 
-//            if (array[j] > array[j+1])
-//               ft_swap(&array[j], &array[j+1]);
-// }

@@ -39,37 +39,14 @@ int	main(int ac, char **av)
 	}
 	stack->array = list_to_array(stack->a, stack->count);
 	bubble_sort(stack->array, stack->count);
-	// printf ("Array is: ");
-	// print_array(stack->array, stack->count);
-
-	// printf("Stack has %d elements\n", stack->count);  //test
-	// printf("stack a is: ");  //test
-	// print_list(stack->a);  //test
 	if (stack->count != 1 && stack->count <= 5)
 		short_sort(stack);
 	else if (stack->count > 5)
 	{
-		// print_list(stack->a);  //test
-				// stack->is_push = 0;
 		presort_a(stack);
-				// stack->is_push = 1;
 		short_sort(stack);
-				// printf("after short sort stack b in short is: ");  //test
-				// print_list(stack->b);  //test
-				// printf(" stack a is: ");  //test
-				// print_list(stack->a);  //test
 		b_to_a_head(stack);
-		// 		printf("after b_to_a_head stack b in short is: ");  //test
-		// 		print_list(stack->b);  //test
-		// 		printf(" stack a is: ");  //test
-		// 		print_list(stack->a);  //test
 		presort_b(stack);
-		// 		printf("after presort_b stack b in short is: ");  //test
-		// 		print_list(stack->b);  //test
-		// 		printf(" stack a is: ");  //test
-		// 		print_list(stack->a);  //test
-		// b_to_a(stack);
-		// b_to_a2(stack, i);
 		b_to_a_tail(stack);
 	}
 	// if (is_sorted(stack->a))
