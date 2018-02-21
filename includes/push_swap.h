@@ -24,6 +24,8 @@ typedef struct	s_stack
 	int		is_push;
 	int		i;
 	int		temp;
+	int		low;
+	int		high;
 	int		pivot;
 	int		*array;
 }				t_stack;
@@ -75,11 +77,12 @@ void			rra(t_stack *stack);
 void			rrb(t_stack *stack);
 void			rrr(t_stack *stack);
 
+void			move_five_b(t_stack *stack);
 void			b_to_a(t_stack *stack);
 void			b_to_a2(t_stack *stack, int i);
 void 			check_b_tail(t_stack *stack);
 int				ft_check(char *str, t_stack *stack);
-int			process_args(int ac, char **av, t_stack *stack);
+int				process_args(int ac, char **av, t_stack *stack);
 int				*list_to_array(t_list *list, int size);
 int				low_in_array(int *arr, int nbr, int size);
 void			print_array(int *array, int size);

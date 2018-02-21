@@ -13,17 +13,107 @@
 
 void	b_to_a_head(t_stack *stack)
 {
-	while (size(stack->b) > stack->count/2)
+	while (index_in_list(stack->b, big(stack->b)) < 5)
+		check_big(stack);
+	shift_b_back(stack);
+	stack->high = size(stack->a);
+	printf("low index of 1 is: %d\n", low_in_array(stack->array, 1, stack->count));
+	printf("low index of 1 is: %d\n", low_index(stack->b, 1));
+	while (size(stack->b) > 5)
 	{
-		while (index_in_list(stack->b, big(stack->b)) < size(stack->b)/2)
-			check_big(stack);
-		shift_b_back(stack);
+		if (low_in_array(stack->array, stack->b->next->data, stack->count) == stack->low)
+			sb(stack);
+		if (low_in_array(stack->array, stack->b->data, stack->count) == stack->low)
+		{
+			pa(stack);
+			ra(stack);
+			stack->low++;
+		}
+		else if (low_in_array(stack->array, stack->b->data, stack->count) <= 6 + stack->low)
+			rb(stack);
+		else
+			pa(stack);
 	}
-	stack->i = 0;
-	while (last(stack->a) < stack->a->data)
-		rra(stack);
-	// check_b_tail(stack);
+	move_five_b(stack);
 }
+
+void	move_five_b(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	if (size(stack->b) <= 5)
+	{
+		while (i < 2)
+		{
+			if (sml(stack->b) == stack->b->data)
+			{
+				pa(stack);
+				ra(stack);
+				i++;
+			}
+			else if (sml(stack->b) == last(stack->b))
+			{
+				rrb(stack);
+				pa(stack);
+				ra(stack);
+				i++;
+			}
+			else
+				while (sml(stack->b) != stack->b->data)
+					rb(stack);
+		}
+	}
+	if (size(stack->b) <= 3)
+	{
+		if (stack->b->data == sml(stack->b))
+		{
+			pa(stack);
+			ra(stack);
+		}
+		else if (stack->b->next->data == sml(stack->b))
+		{
+			sb(stack);
+			pa(stack);
+			ra(stack);
+		}
+		else
+		{
+			rrb(stack);
+			pa(stack);
+			ra(stack);
+		}
+		if (stack->b->data > stack->b->next->data)
+		{
+			sb(stack);
+			pa(stack);
+			ra(stack);
+			pa(stack);
+			ra(stack);
+		}
+		else
+		{
+			pa(stack);
+			ra(stack);
+			pa(stack);
+			ra(stack);
+		}
+	}
+}
+
+// void	b_to_a_head(t_stack *stack)
+// {
+// 	while (size(stack->b) > stack->count/2)
+// 	{
+// 		while (index_in_list(stack->b, big(stack->b)) < size(stack->b)/2)
+// 			check_big(stack);
+// 		shift_b_back(stack);
+// 	}
+// 	stack->i = 0;
+// 	while (last(stack->a) < stack->a->data)
+// 		rra(stack);
+// 	// check_b_tail(stack);
+// }
 
 void check_b_tail(t_stack *stack)
 {

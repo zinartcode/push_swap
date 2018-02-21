@@ -58,4 +58,6 @@ void	init_stack(t_stack *stack)
 	stack->i = 0;
 	stack->temp = 0;
 	stack->pivot = 0;
+	stack->low = 1;
+	stack->high = 1;
 }

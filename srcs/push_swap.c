@@ -39,8 +39,8 @@ int	main(int ac, char **av)
 	}
 	stack->array = list_to_array(stack->a, stack->count);
 	bubble_sort(stack->array, stack->count);
-	// printf ("Array is: ");
-	// print_array(stack->array, stack->count);
+	printf ("Array is: ");
+	print_array(stack->array, stack->count);
 
 	// printf("Stack has %d elements\n", stack->count);  //test
 	// printf("stack a is: ");  //test
@@ -63,29 +63,29 @@ int	main(int ac, char **av)
 		// 		print_list(stack->b);  //test
 		// 		printf(" stack a is: ");  //test
 		// 		print_list(stack->a);  //test
-		presort_b(stack);
+		// presort_b(stack);
 		// 		printf("after presort_b stack b in short is: ");  //test
 		// 		print_list(stack->b);  //test
 		// 		printf(" stack a is: ");  //test
 		// 		print_list(stack->a);  //test
 		// b_to_a(stack);
 		// b_to_a2(stack, i);
-		b_to_a_tail(stack);
+		// b_to_a_tail(stack);
 	}
-	// if (is_sorted(stack->a))
-	// {
-	// 	printf(" Sorted stack a is: ");  //test
-	// 	print_list(stack->a);  //test
-	// }
-	// else
-	// {
-	// 	printf(" stack a is: ");  //test
-	// 	print_list(stack->a);  //test
-	// }
-	// printf("Size: %d\n", size(stack->a));
-	// printf("stack b is: ");  //test
-	// print_list(stack->b);  //test
-	// printf("Size: %d\n", size(stack->b));
+	if (is_sorted(stack->a))
+	{
+		printf("\n\n Sorted stack a is: ");  //test
+		print_list(stack->a);  //test
+	}
+	else
+	{
+		printf(" \nstack a is: ");  //test
+		print_list(stack->a);  //test
+	}
+	printf("Size: %d\n", size(stack->a));
+	printf("stack b is: ");  //test
+	print_list(stack->b);  //test
+	printf("Size: %d\n", size(stack->b));
 	free_list(&stack->a);
 	free_list(&stack->b);
 	free(stack->array);
