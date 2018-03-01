@@ -19,42 +19,57 @@ void	b_to_a_head(t_stack *stack)
 			check_big(stack);
 		shift_b_back(stack);
 	}
-	stack->i = 0;
+	if (index_in_list(stack->b, big(stack->b)) >  size(stack->b) - 5)
+	{
+		stack->temp = second_big(stack->b);
+		while (stack->b->data != big(stack->b))
+		{
+			if (stack->b->data == stack->temp)
+				pa(stack);
+			else
+			{
+				rrb(stack);
+				stack->i++;
+			}
+		}
+		pa(stack);
+		check_head_a(stack);
+		v_operation(stack);
+	}
 	while (last(stack->a) < stack->a->data)
 		rra(stack);
-	// check_b_tail(stack);
 }
 
-void check_b_tail(t_stack *stack)
-{
-	if (size(stack->b) > 5)
-	{
-		while (last(stack->b) == sml(stack->b) || last(stack->b) == big(stack->b)
-		 || stack->b->data == sml(stack->b) || stack->b->data == big(stack->b))
-		{
-		if (stack->b && stack->b->data == big(stack->b))
-			pa(stack);
-		if (stack->b && last(stack->b) == big(stack->b))
-		{
-			rrb(stack);
-			pa(stack);
-		}
-		if (stack->b && stack->b->data == sml(stack->b))
-		{
-			pa(stack);
-			ra(stack);
-			stack->i++;
-		}
-		if (stack->b && last(stack->b) == sml(stack->b))
-		{
-			rrb(stack);
-			pa(stack);
-			ra(stack);
-			stack->i++;
-		}
-		}
-	}
-}
+// void check_b_tail(t_stack *stack)
+// {
+// 	if (size(stack->b) > 5)
+// 	{
+// 		while (last(stack->b) == sml(stack->b) || last(stack->b) == big(stack->b)
+// 		 || stack->b->data == sml(stack->b) || stack->b->data == big(stack->b))
+// 		{
+// 		if (stack->b && stack->b->data == big(stack->b))
+// 			pa(stack);
+// 		if (stack->b && last(stack->b) == big(stack->b))
+// 		{
+// 			rrb(stack);
+// 			pa(stack);
+// 		}
+// 		if (stack->b && stack->b->data == sml(stack->b))
+// 		{
+// 			pa(stack);
+// 			ra(stack);
+// 			stack->i++;
+// 		}
+// 		if (stack->b && last(stack->b) == sml(stack->b))
+// 		{
+// 			rrb(stack);
+// 			pa(stack);
+// 			ra(stack);
+// 			stack->i++;
+// 		}
+// 		}
+// 	}
+// }
 
 void	check_big(t_stack *stack)
 {
@@ -85,14 +100,14 @@ void	shift_b_back(t_stack *stack)
 			stack->i--;
 		}
 	}
+	v_operation(stack);
 }
 
 void	b_to_a_tail(t_stack *stack)
 {
-	// check_b_tail(stack);
 	while (size(stack->b) > 3)
 	{
-		check_b_tail(stack);
+		// check_b_tail(stack);
 		while (index_in_list(stack->b, big(stack->b)) <= size(stack->b)/2)
 			check_big(stack);
 		if (stack->b && stack->i > 0)

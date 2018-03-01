@@ -21,16 +21,17 @@ void	print_list(t_list *list)
     {
   		while (current != NULL)
     	{
-     	   printf("%d ", current->data);
+     	   ft_putnbr(current->data);
+     	   ft_putchar(' ');
      	   current = current->next;
 		}
 	}
-    printf("\n");
+    ft_putchar('\n');
 }
 
 int		ft_error(t_list **list)
 {
-	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(RED"Error\n", 2);
 	free_list(list);
 	exit(0);
 }
@@ -58,4 +59,30 @@ void	init_stack(t_stack *stack)
 	stack->i = 0;
 	stack->temp = 0;
 	stack->pivot = 0;
+	stack->v = 0;
+}
+
+void	v_operation(t_stack *stack)
+{
+	if (stack->v == 1)
+	{
+		if (is_sorted(stack->a))
+		{
+			ft_putstr(GRN" Sorted stack a is: "NRM);  //test
+			print_list(stack->a);  //test
+		}
+		else
+		{
+			ft_putstr(GRN" stack a is: "NRM);  //test
+			print_list(stack->a);  //test
+		}
+		ft_putstr(GRN" size: "NRM);
+		ft_putnbr(size(stack->a));
+		ft_putchar('\n');
+		ft_putstr(GRN"stack b is: "NRM);  //test
+		print_list(stack->b);  //test
+		ft_putstr(GRN" size: "NRM);
+		ft_putnbr(size(stack->b));
+		ft_putchar('\n');
+	}
 }

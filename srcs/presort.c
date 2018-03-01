@@ -65,6 +65,7 @@ void	presort_a(t_stack *stack)
 				ra(stack);
 		}
 	}
+	v_operation(stack);
 }
 
 void	presort_b(t_stack *stack)
@@ -74,6 +75,7 @@ void	presort_b(t_stack *stack)
 	int	pivot;
 
 	pivot = size(stack->b)/2;
+	stack->i = 0;
 	i = 0;
 	stack->temp = stack->a->data;
 	while (size(stack->b) >= 5)
@@ -98,8 +100,11 @@ void	presort_b(t_stack *stack)
 				rb(stack);
 		}
 	}
+	v_operation(stack);
 	b_to_a(stack);
+	v_operation(stack);
 	b_to_a2(stack, i);
+	v_operation(stack);
 }
 
 void	b_to_a(t_stack *stack)
@@ -136,5 +141,5 @@ void	b_to_a2(t_stack *stack, int i)
 			i--;
 		}
 	}
-	check_b_tail(stack);
+	// check_b_tail(stack);
 }

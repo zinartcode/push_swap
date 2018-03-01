@@ -28,9 +28,9 @@ int				main(int ac, char **av)
 		if (process_args(ac, av, stack))
 		{
  			if (is_sorted(stack->a))
-				ft_putstr("OK\n");
+				ft_putstr(GRN"OK\n");
 			else
-				ft_putstr("KO\n");
+				ft_putstr(RED"KO\n");
 		}
 	}
 	free_list(&stack->a);
@@ -58,9 +58,7 @@ int				process_args(int ac, char **av, t_stack *stack)
 	{
 		if (!ft_check(str, stack))
 		{
-			ft_putstr_fd("Error\n", 2);
-			free_list(&stack->a);
-			free_list(&stack->b);
+			ft_putstr_fd(RED"Error\n", 2);
 			return (0);
 		}
 	}

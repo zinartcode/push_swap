@@ -28,6 +28,7 @@ void	short_sort(t_stack *stack)
 		sort_five(stack);
 	else
 		ft_error(&stack->a);
+	v_operation(stack);
 }
 
 void	sort_three(t_stack *stack)

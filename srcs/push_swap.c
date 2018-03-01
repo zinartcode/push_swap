@@ -22,19 +22,26 @@ int	main(int ac, char **av)
 	init_stack(stack);
 	if (ac == 1)
 		return(0);
-	while(++i < ac)
+	else if (ac >= 2)
 	{
-		if (is_num(av[i]) && check_int(av[i]))
-			ls_push_back(stack, ft_atoi(av[i]));
-		else if (is_multinum(av[i]))
-			run_multinum(av[i], stack);
-		else
-			ft_error(&stack->a);
+		if (ft_strcmp(av[1], "-v") == 0)
+		{
+			stack->v = 1;
+			i++;
+		}
+		while(++i < ac)
+		{
+			if (is_num(av[i]) && check_int(av[i]))
+				ls_push_back(stack, ft_atoi(av[i]));
+			else if (is_multinum(av[i]))
+				run_multinum(av[i], stack);
+			else
+				ft_error(&stack->a);
+		}
 	}
 	if (is_sorted(stack->a))
 	{
-		// printf("");  //test
-		// free_list(&stack->a);
+		free_list(&stack->a);
 		return (0);
 	}
 	stack->array = list_to_array(stack->a, stack->count);
@@ -43,6 +50,7 @@ int	main(int ac, char **av)
 		short_sort(stack);
 	else if (stack->count > 5)
 	{
+		v_operation(stack);
 		presort_a(stack);
 		short_sort(stack);
 		b_to_a_head(stack);
@@ -51,12 +59,12 @@ int	main(int ac, char **av)
 	}
 	// if (is_sorted(stack->a))
 	// {
-	// 	printf(" Sorted stack a is: ");  //test
+	// 	ft_putstr(GRN" Sorted stack a is: "NRM);  //test
 	// 	print_list(stack->a);  //test
 	// }
 	// else
 	// {
-	// 	printf(" stack a is: ");  //test
+	// 	ft_putstr(RED" stack a is: "NRM);  //test
 	// 	print_list(stack->a);  //test
 	// }
 	// printf("Size: %d\n", size(stack->a));
@@ -68,3 +76,4 @@ int	main(int ac, char **av)
 	free(stack->array);
 	return (0);
 }
+
