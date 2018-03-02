@@ -60,3 +60,24 @@ t_list	*ft_create_elem(int nbr)
 	}
 	return (new);
 }
+
+void	create_list(int ac, char **av, t_stack *stack)
+{
+	int		i;
+
+	i = 0;
+	if (ft_strcmp(av[1], "-v") == 0)
+	{
+		stack->v = 1;
+		i++;
+	}
+	while(++i < ac)
+	{
+		if (is_num(av[i]) && check_int(av[i]))
+			ls_push_back(stack, ft_atoi(av[i]));
+		else if (is_multinum(av[i]))
+			run_multinum(av[i], stack);
+		else
+			ft_error(&stack->a);
+	}
+}

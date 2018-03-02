@@ -28,9 +28,9 @@ int				main(int ac, char **av)
 		if (process_args(ac, av, stack))
 		{
  			if (is_sorted(stack->a))
-				ft_putstr(GRN"OK\n");
+				ft_putstr(GRN"OK\n"NRM);
 			else
-				ft_putstr(RED"KO\n");
+				ft_putstr(RED"KO\n"NRM);
 		}
 	}
 	free_list(&stack->a);
