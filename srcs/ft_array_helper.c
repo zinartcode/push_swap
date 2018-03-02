@@ -50,21 +50,6 @@ int	low_in_array(int *arr, int nbr, int size)
 	return (j);
 }
 
-
-
-void	print_array(int *array, int size)
-{
-	int		i;
-
-	i = 0;
-	while (i < size)
-	{
-		printf("%d ", array[i]);
-		i++;
-	}
-	ft_putchar('\n');
-}
-
  void bubble_sort(int *array, int size)
 {
 	int i;

@@ -14,7 +14,7 @@
 
 void	short_sort(t_stack *stack)
 {
-	if (size(stack->a) <= 3)
+	if (size(stack->a) <= 3 && is_sorted(stack->a) == 0)
 	{
 		if (size(stack->a) == 2)
 		{
@@ -57,12 +57,12 @@ void	sort_three(t_stack *stack)
 	}
 }
 
-int	sort_five(t_stack *stack)
+void	sort_five(t_stack *stack)
 {
 	int	i;
 
 	i = 0;
-	if (size(stack->a) <= 5)
+	if (size(stack->a) <= 5 && is_sorted(stack->a) == 0)
 	{
 		while (i < 2)
 		{
@@ -78,14 +78,12 @@ int	sort_five(t_stack *stack)
 				i++;
 			}
 			else
-				while (sml(stack->a) != stack->a->data)
-					ra(stack);
+				ra(stack);
 		}
 		short_sort(stack);
 		pa(stack);
 		pa(stack);
 	}
-	return (0);
 }
 
 int	is_sorted(t_list *list)

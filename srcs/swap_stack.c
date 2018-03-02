@@ -42,10 +42,20 @@ void	sb(t_stack *stack)
 
 void	ss(t_stack *stack)
 {
-	sa(stack);
-	sb(stack);
 	if (stack->is_push == 1)
-		ft_putstr("ss\n");
+	{
+		stack->is_push = 0;
+		sa(stack);
+		sb(stack);
+		stack->is_push = 1;
+	}
+	else
+	{
+		sa(stack);
+		sb(stack);
+	}
+	if (stack->is_push == 1)
+		ft_putstr("rr\n");
 }
 
 void	pa(t_stack *stack)

@@ -13,7 +13,8 @@
 #include "push_swap.h"
 
 int	main(int ac, char **av)
-{	t_stack		*stack;
+{	
+	t_stack		*stack;
 
 	stack = malloc(sizeof(t_stack));
 	init_stack(stack);
@@ -28,20 +29,6 @@ int	main(int ac, char **av)
 	}
 	else
 		sort_stack(stack);
-	// if (is_sorted(stack->a))
-	// {
-	// 	ft_putstr(GRN" Sorted stack a is: "NRM);  //test
-	// 	print_list(stack->a);  //test
-	// }
-	// else
-	// {
-	// 	ft_putstr(RED" stack a is: "NRM);  //test
-	// 	print_list(stack->a);  //test
-	// }
-	// printf("Size: %d\n", size(stack->a));
-	// printf("stack b is: ");  //test
-	// print_list(stack->b);  //test
-	// printf("Size: %d\n", size(stack->b));
 	free_list(&stack->a);
 	free_list(&stack->b);
 	free(stack->array);

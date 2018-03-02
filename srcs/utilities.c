@@ -68,19 +68,19 @@ void	v_operation(t_stack *stack)
 	{
 		if (is_sorted(stack->a))
 		{
-			ft_putstr(GRN" Sorted stack a is: "NRM);  //test
-			print_list(stack->a);  //test
+			ft_putstr(GRN" Sorted stack a is: "NRM);
+			print_list(stack->a);
 		}
 		else
 		{
-			ft_putstr(GRN" stack a is: "NRM);  //test
-			print_list(stack->a);  //test
+			ft_putstr(GRN" stack a is: "NRM);
+			print_list(stack->a);
 		}
 		ft_putstr(GRN" size: "NRM);
 		ft_putnbr(size(stack->a));
 		ft_putchar('\n');
-		ft_putstr(GRN"stack b is: "NRM);  //test
-		print_list(stack->b);  //test
+		ft_putstr(GRN"stack b is: "NRM);
+		print_list(stack->b);
 		ft_putstr(GRN" size: "NRM);
 		ft_putnbr(size(stack->b));
 		ft_putchar('\n');

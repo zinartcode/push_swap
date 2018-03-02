@@ -52,8 +52,18 @@ void	rb(t_stack *stack)
 
 void	rr(t_stack *stack)
 {
-	ra(stack);
-	rb(stack);
+	if (stack->is_push == 1)
+	{
+		stack->is_push = 0;
+		ra(stack);
+		rb(stack);
+		stack->is_push = 1;
+	}
+	else
+	{
+		ra(stack);
+		rb(stack);
+	}
 	if (stack->is_push == 1)
 		ft_putstr("rr\n");
 }

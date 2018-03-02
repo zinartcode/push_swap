@@ -12,40 +12,6 @@
 
 #include "push_swap.h"
 
-int	low_index(t_list *list, int nbr)
-{
-	t_list *temp;
-	int	i;
-
-	temp = list;
-	i = 0;
-
-	while (temp)
-	{
-		if (nbr > temp->data)
-			i++;
-		temp = temp->next;
-	}
-	return (i);
-}
-
-int	high_index(t_list *list, int nbr)
-{
-	t_list *temp;
-	int	i;
-
-	temp = list;
-	i = 0;
-
-	while (temp)
-	{
-		if (nbr < temp->data)
-			i++;
-		temp = temp->next;
-	}
-	return (i);
-}
-
 void	presort_a(t_stack *stack)
 {
 	int	count;
@@ -70,41 +36,47 @@ void	presort_a(t_stack *stack)
 
 void	presort_b(t_stack *stack)
 {
-	int	i;
 	int	count;
-	int	pivot;
 
-	pivot = size(stack->b)/2;
 	stack->i = 0;
-	i = 0;
+	stack->pivot = 0;
 	stack->temp = stack->a->data;
 	while (size(stack->b) >= 5)
 	{
 		count = size(stack->b)/4;
-		if (stack->b && count != 0)
-		{
-			if (high_index(stack->b, stack->b->data) < count)
-			{
-				pa(stack);
-				count--;
-				i++;
-			}
-			else if (stack->b->data == sml(stack->b))
-			{
-				pa(stack);
-				ra(stack);
-				count--;
-				stack->i++;
-			}
-			else
-				rb(stack);
-		}
+		presort_b2(stack, count);
 	}
 	v_operation(stack);
 	b_to_a(stack);
 	v_operation(stack);
-	b_to_a2(stack, i);
+	b_to_a2(stack);
 	v_operation(stack);
+}
+
+void	presort_b2(t_stack *stack, int count)
+{
+	if (stack->b && count != 0)
+	{
+		if (high_index(stack->b, stack->b->data) < count)
+		{
+			pa(stack);
+			count--;
+			stack->pivot++;
+		}
+		else if (stack->b->data == sml(stack->b))
+		{
+			pa(stack);
+			if (high_index(stack->b, stack->b->data) >= count &&
+				stack->b->data != sml(stack->b))
+				rr(stack);
+			else
+				ra(stack);
+			count--;
+			stack->i++;
+		}
+		else
+			rb(stack);
+	}	
 }
 
 void	b_to_a(t_stack *stack)
@@ -114,15 +86,18 @@ void	b_to_a(t_stack *stack)
 		if (stack->b->data == sml(stack->b))
 		{
 			pa(stack);
-			ra(stack);
-			stack->i++;
+			if (size(stack->b) > 1 && stack->b->data != sml(stack->b))
+				rr(stack);
+			else
+				ra(stack);
+				stack->i++;
 		}
 		else
 			rb(stack);
 	}
 }
 
-void	b_to_a2(t_stack *stack, int i)
+void	b_to_a2(t_stack *stack)
 {
 	stack->i++;
 	while (stack->a->data != stack->temp)
@@ -133,13 +108,12 @@ void	b_to_a2(t_stack *stack, int i)
 		{
 			ra(stack);
 			stack->i++;
-				i--;
+				stack->pivot--;
 		}
 		else
 		{
 			pb(stack);
-			i--;
+			stack->pivot--;
 		}
 	}
-	// check_b_tail(stack);
 }

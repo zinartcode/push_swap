@@ -48,24 +48,45 @@ int		index_in_list(t_list *list, int n)
 	return (i);
 }
 
-void	check_head_b(t_stack *stack)
-{
-	if (stack->b && stack->b->next != NULL)
-	{
-		if (stack->b->data < stack->b->next->data)
-		{
-			sb(stack);
-		}
-	}
-}
-
 void	check_head_a(t_stack *stack)
 {
 	if (stack->a && stack->a->next != NULL)
 	{
 		if (stack->a->data > stack->a->next->data)
-		{
 			sa(stack);
-		}
 	}
+}
+
+int	low_index(t_list *list, int nbr)
+{
+	t_list *temp;
+	int	i;
+
+	temp = list;
+	i = 0;
+
+	while (temp)
+	{
+		if (nbr > temp->data)
+			i++;
+		temp = temp->next;
+	}
+	return (i);
+}
+
+int	high_index(t_list *list, int nbr)
+{
+	t_list *temp;
+	int	i;
+
+	temp = list;
+	i = 0;
+
+	while (temp)
+	{
+		if (nbr < temp->data)
+			i++;
+		temp = temp->next;
+	}
+	return (i);
 }

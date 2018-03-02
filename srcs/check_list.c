@@ -94,13 +94,16 @@ int		second_big(t_list *list)
 	temp = list;
 	n = big(temp);
 	i = sml(temp);
-	if (temp->data < n && temp->data > i)
-		i = temp->data;
-	while (temp->next != NULL)
+	if (size(temp) > 1)
 	{
-		if (i < temp->next->data && temp->next->data != n)
-			i = temp->next->data;
-		temp = temp->next;
+		if (temp->data < n && temp->data > i)
+			i = temp->data;
+		while (temp->next != NULL)
+		{
+			if (i < temp->next->data && temp->next->data != n)
+				i = temp->next->data;
+			temp = temp->next;
+		}
 	}
 	return (i);
 }
