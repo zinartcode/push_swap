@@ -12,14 +12,14 @@
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
-{	
-	t_stack		*stack;
+int			main(int ac, char **av)
+{
+	t_stack	*stack;
 
 	stack = malloc(sizeof(t_stack));
 	init_stack(stack);
 	if (ac == 1)
-		return(0);
+		return (0);
 	else if (ac >= 2)
 		create_list(ac, av, stack);
 	if (is_sorted(stack->a))
@@ -35,7 +35,7 @@ int	main(int ac, char **av)
 	return (0);
 }
 
-void	sort_stack(t_stack *stack)
+void		sort_stack(t_stack *stack)
 {
 	stack->array = list_to_array(stack->a, stack->count);
 	bubble_sort(stack->array, stack->count);
@@ -52,4 +52,3 @@ void	sort_stack(t_stack *stack)
 		v_operation(stack);
 	}
 }
-

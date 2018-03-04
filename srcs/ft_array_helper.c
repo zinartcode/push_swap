@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int		*list_to_array(t_list *list, int size)
+int			*list_to_array(t_list *list, int size)
 {
 	int		*array;
 	int		i;
@@ -32,14 +32,13 @@ int		*list_to_array(t_list *list, int size)
 	return (array);
 }
 
-int	low_in_array(int *arr, int nbr, int size)
+int			low_in_array(int *arr, int nbr, int size)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	j = 0;
 	i = 0;
-
 	while (size > 0)
 	{
 		if (nbr >= arr[i])
@@ -50,10 +49,10 @@ int	low_in_array(int *arr, int nbr, int size)
 	return (j);
 }
 
- void bubble_sort(int *array, int size)
+void		bubble_sort(int *array, int size)
 {
-	int i;
-	int tmp;
+	int		i;
+	int		tmp;
 
 	i = 1;
 	while (i < size)
@@ -70,5 +69,5 @@ int	low_in_array(int *arr, int nbr, int size)
 				i = 1;
 		}
 	}
-	return;
+	return ;
 }

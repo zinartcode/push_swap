@@ -22,10 +22,12 @@ void	ls_push_back(t_stack *stack, int nbr)
 		if (is_double(stack->a, nbr))
 			ft_error(&stack->a);
 		else
+		{
 			while (new->next != NULL)
 				new = new->next;
 			new->next = ft_create_elem(nbr);
 			stack->count++;
+		}
 	}
 	else
 	{
@@ -39,13 +41,13 @@ int		is_double(t_list *list, int nbr)
 	t_list *tmp;
 
 	tmp = list;
-	while(tmp)
+	while (tmp)
 	{
 		if (tmp->data == nbr)
 			return (1);
 		tmp = tmp->next;
 	}
-	return(0);
+	return (0);
 }
 
 t_list	*ft_create_elem(int nbr)
@@ -71,7 +73,7 @@ void	create_list(int ac, char **av, t_stack *stack)
 		stack->v = 1;
 		i++;
 	}
-	while(++i < ac)
+	while (++i < ac)
 	{
 		if (is_num(av[i]) && check_int(av[i]))
 			ls_push_back(stack, ft_atoi(av[i]));

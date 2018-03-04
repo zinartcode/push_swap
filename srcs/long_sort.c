@@ -9,17 +9,18 @@
 /*   Updated: 2018/02/19 22:55:25 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	b_to_a_head(t_stack *stack)
 {
-	while (size(stack->b) > stack->count/2)
+	while (size(stack->b) > stack->count / 2)
 	{
-		while (index_in_list(stack->b, big(stack->b)) < size(stack->b)/2)
+		while (index_in_list(stack->b, big(stack->b)) < size(stack->b) / 2)
 			check_big(stack);
 		shift_b_back(stack);
 	}
-	if (index_in_list(stack->b, big(stack->b)) >  size(stack->b) - 5)
+	if (index_in_list(stack->b, big(stack->b)) > size(stack->b) - 5)
 	{
 		stack->temp = second_big(stack->b);
 		while (stack->b && stack->b->data != big(stack->b))
@@ -54,14 +55,14 @@ void	check_big(t_stack *stack)
 		}
 	}
 	pa(stack);
-	check_head_a(stack);	
+	check_head_a(stack);
 }
 
 void	shift_b_back(t_stack *stack)
 {
 	while (stack->b && stack->i > 0)
 	{
-		if (index_in_list(stack->b, big(stack->b)) <= size(stack->b)/2)
+		if (index_in_list(stack->b, big(stack->b)) <= size(stack->b) / 2)
 			check_big(stack);
 		else
 		{
@@ -76,14 +77,14 @@ void	b_to_a_tail(t_stack *stack)
 {
 	while (size(stack->b) > 3)
 	{
-		while (index_in_list(stack->b, big(stack->b)) <= size(stack->b)/2)
+		while (index_in_list(stack->b, big(stack->b)) <= size(stack->b) / 2)
 			check_big(stack);
 		if (stack->b && stack->i > 0)
-		shift_b_back(stack);
+			shift_b_back(stack);
 		else
 		{
-			while (index_in_list(stack->b, big(stack->b)) > size(stack->b)/2)
-				rrb(stack);	
+			while (index_in_list(stack->b, big(stack->b)) > size(stack->b) / 2)
+				rrb(stack);
 		}
 	}
 	if (size(stack->b) <= 3)
@@ -98,4 +99,3 @@ void	b_to_a_tail(t_stack *stack)
 	while (is_sorted(stack->a) == 0 && last(stack->a) < stack->a->data)
 		rra(stack);
 }
-

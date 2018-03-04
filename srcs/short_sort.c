@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	short_sort(t_stack *stack)
+void		short_sort(t_stack *stack)
 {
 	if (size(stack->a) <= 3 && is_sorted(stack->a) == 0)
 	{
@@ -31,11 +31,12 @@ void	short_sort(t_stack *stack)
 	v_operation(stack);
 }
 
-void	sort_three(t_stack *stack)
+void		sort_three(t_stack *stack)
 {
 	if (size(stack->a) == 3 && is_sorted(stack->a) == 0)
 	{
-		if (stack->a->data == sml(stack->a) && stack->a->next->data == big(stack->a))
+		if (stack->a->data == sml(stack->a) &&
+			stack->a->next->data == big(stack->a))
 		{
 			rra(stack);
 			sa(stack);
@@ -57,9 +58,9 @@ void	sort_three(t_stack *stack)
 	}
 }
 
-void	sort_five(t_stack *stack)
+void		sort_five(t_stack *stack)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	if (size(stack->a) <= 5 && is_sorted(stack->a) == 0)
@@ -86,19 +87,21 @@ void	sort_five(t_stack *stack)
 	}
 }
 
-int	is_sorted(t_list *list)
+int			is_sorted(t_list *list)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	tmp = list;
 	if (tmp->next == NULL)
 		return (1);
 	else
+	{
 		while (tmp->next != NULL)
-		{ 
+		{
 			if (tmp->data > tmp->next->data)
 				return (0);
 			tmp = tmp->next;
 		}
-		return (1);
+	}
+	return (1);
 }

@@ -15,19 +15,19 @@
 int				main(int ac, char **av)
 {
 	t_stack		*stack;
-	char *str;
+	char		*str;
 
 	str = NULL;
 	stack = malloc(sizeof(t_stack));
 	init_stack(stack);
 	stack->is_push = 0;
 	if (ac == 1)
-		return(0);
+		return (0);
 	if (ac >= 2)
 	{
 		if (process_args(ac, av, stack))
 		{
- 			if (is_sorted(stack->a))
+			if (is_sorted(stack->a))
 				ft_putstr(GRN"OK\n"NRM);
 			else
 				ft_putstr(RED"KO\n"NRM);
@@ -45,7 +45,7 @@ int				process_args(int ac, char **av, t_stack *stack)
 
 	i = 0;
 	str = NULL;
-	while(++i < ac)
+	while (++i < ac)
 	{
 		if (is_num(av[i]) && check_int(av[i]))
 			ls_push_back(stack, ft_atoi(av[i]));
@@ -65,7 +65,7 @@ int				process_args(int ac, char **av, t_stack *stack)
 	return (1);
 }
 
-int		ft_check(char *str, t_stack *stack)
+int				ft_check(char *str, t_stack *stack)
 {
 	if (!(ft_strcmp(str, "sa")))
 		sa(stack);

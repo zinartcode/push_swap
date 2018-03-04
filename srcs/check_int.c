@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-int	is_num(char *str)
+int				is_num(char *str)
 {
-	int i;
+	int			i;
 
 	i = 0;
 	if (str[i] == '-')
@@ -27,9 +27,9 @@ int	is_num(char *str)
 		return (0);
 }
 
-int	is_multinum(char *str)
+int				is_multinum(char *str)
 {
-	int i;
+	int			i;
 
 	i = 0;
 	if (str[i] == '-')
@@ -54,7 +54,7 @@ void			run_multinum(char *av, t_stack *stack)
 			i++;
 		if (ft_isdigit(av[i]) || (av[i] == '-' && ft_isdigit(av[i + 1])))
 		{
-			while(av[i] != '\0' && av[i] != ' ')
+			while (av[i] != '\0' && av[i] != ' ')
 			{
 				stack->pivot++;
 				i++;
@@ -71,11 +71,11 @@ void			run_multinum(char *av, t_stack *stack)
 	}
 }
 
-int	check_int(char *str)
+int				check_int(char *str)
 {
-	ssize_t i;
-	ssize_t neg;
-	ssize_t res;
+	ssize_t		i;
+	ssize_t		neg;
+	ssize_t		res;
 
 	neg = 1;
 	i = 0;

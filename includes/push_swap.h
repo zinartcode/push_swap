@@ -16,10 +16,10 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-#define RED  "\x1B[31m"
-#define GRN  "\x1B[32m"
-#define YEL  "\x1B[33m"
-#define NRM  "\x1B[0m"
+# define RED "\x1B[31m"
+# define GRN "\x1B[32m"
+# define YEL "\x1B[33m"
+# define NRM "\x1B[0m"
 
 typedef struct	s_stack
 {
@@ -88,7 +88,7 @@ int				ft_check(char *str, t_stack *stack);
 int				process_args(int ac, char **av, t_stack *stack);
 int				*list_to_array(t_list *list, int size);
 int				low_in_array(int *arr, int nbr, int size);
-void 			bubble_sort(int *array, int size);
+void			bubble_sort(int *array, int size);
 void			v_operation(t_stack *stack);
 
 #endif

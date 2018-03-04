@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-int		size(t_list *list)
+int			size(t_list *list)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (list)
@@ -25,10 +25,10 @@ int		size(t_list *list)
 	return (i);
 }
 
-int		sml(t_list *list)
+int			sml(t_list *list)
 {
-	t_list *temp;
-	int	i;
+	t_list	*temp;
+	int		i;
 
 	i = 0;
 	temp = NULL;
@@ -46,11 +46,11 @@ int		sml(t_list *list)
 	return (i);
 }
 
-int		second_sml(t_list *list)
+int			second_sml(t_list *list)
 {
-	t_list *temp;
-	int	i;
-	int n;
+	t_list	*temp;
+	int		i;
+	int		n;
 
 	temp = list;
 	i = big(temp);
@@ -64,10 +64,10 @@ int		second_sml(t_list *list)
 	return (i);
 }
 
-int		big(t_list *list)
+int			big(t_list *list)
 {
-	t_list *temp;
-	int	i;
+	t_list	*temp;
+	int		i;
 
 	i = 0;
 	temp = NULL;
@@ -85,11 +85,11 @@ int		big(t_list *list)
 	return (i);
 }
 
-int		second_big(t_list *list)
+int			second_big(t_list *list)
 {
-	t_list *temp;
-	int	i;
-	int	n;
+	t_list	*temp;
+	int		i;
+	int		n;
 
 	temp = list;
 	n = big(temp);

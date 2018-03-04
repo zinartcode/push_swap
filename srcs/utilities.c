@@ -12,24 +12,24 @@
 
 #include "push_swap.h"
 
-void	print_list(t_list *list)
+void			print_list(t_list *list)
 {
-    t_list *current;
+	t_list		*current;
 
-    current = list;
-    if (list)
-    {
-  		while (current != NULL)
-    	{
-     	   ft_putnbr(current->data);
-     	   ft_putchar(' ');
-     	   current = current->next;
+	current = list;
+	if (list)
+	{
+		while (current != NULL)
+		{
+			ft_putnbr(current->data);
+			ft_putchar(' ');
+			current = current->next;
 		}
 	}
-    ft_putchar('\n');
+	ft_putchar('\n');
 }
 
-int		ft_error(t_list **list)
+int				ft_error(t_list **list)
 {
 	ft_putstr_fd(RED"Error\n", 2);
 	free_list(list);
@@ -48,9 +48,10 @@ void			free_list(t_list **list)
 		free(temp);
 		temp = temp2;
 	}
+	free(temp);
 }
 
-void	init_stack(t_stack *stack)
+void			init_stack(t_stack *stack)
 {
 	stack->b = NULL;
 	stack->a = NULL;
@@ -62,7 +63,7 @@ void	init_stack(t_stack *stack)
 	stack->v = 0;
 }
 
-void	v_operation(t_stack *stack)
+void			v_operation(t_stack *stack)
 {
 	if (stack->v == 1)
 	{
