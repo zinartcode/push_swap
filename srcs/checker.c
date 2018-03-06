@@ -61,7 +61,6 @@ int				process_args(int ac, char **av, t_stack *stack)
 			ft_putstr_fd(RED"Error\n", 2);
 			return (0);
 		}
-		free(str);
 	}
 	return (1);
 }
