@@ -31,7 +31,7 @@ void			print_list(t_list *list)
 
 int				ft_error(t_list **list)
 {
-	ft_putstr_fd(RED"Error\n", 2);
+	ft_putstr_fd(RED"Error\n"NRM, 2);
 	free_list(list);
 	exit(0);
 }

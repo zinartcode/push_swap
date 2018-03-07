@@ -58,11 +58,14 @@ int				process_args(int ac, char **av, t_stack *stack)
 	{
 		if (!ft_check(str, stack))
 		{
-			ft_putstr_fd(RED"Error\n", 2);
+			ft_putstr_fd(RED"Error\n"NRM, 2);
+			free(str);
 			return (0);
 		}
 		free(str);
 	}
+	if (str)
+		free(str);
 	return (1);
 }
 

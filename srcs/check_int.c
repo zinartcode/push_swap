@@ -17,7 +17,7 @@ int				is_num(char *str)
 	int			i;
 
 	i = 0;
-	if (str[i] == '-')
+	if (str[i] == '-' || str[i] == '+')
 		i++;
 	while (str[i] && ft_isdigit(str[i]))
 		i++;
@@ -32,9 +32,10 @@ int				is_multinum(char *str)
 	int			i;
 
 	i = 0;
-	if (str[i] == '-')
+	if (str[i] == '-' || str[i] == '+')
 		i++;
-	while (str[i] && (ft_isdigit(str[i]) || str[i] == ' '))
+	while (str[i] && (ft_isdigit(str[i]) || str[i] == ' '
+		|| str[i] == '-' || str[i] == '+'))
 		i++;
 	if (str[i] == '\0')
 		return (1);
@@ -50,7 +51,7 @@ void			run_multinum(char *av, t_stack *stack)
 	i = 0;
 	while (i <= ft_strlen(av))
 	{
-		while (av[i] && av[i] == ' ')
+		while (av[i] && (av[i] == ' ' || av[i] == '+'))
 			i++;
 		if (ft_isdigit(av[i]) || (av[i] == '-' && ft_isdigit(av[i + 1])))
 		{
@@ -85,6 +86,9 @@ int				check_int(char *str)
 		neg = -1;
 		str++;
 	}
+	else
+		if (str[i] == '+')
+			str++;
 	while ((str[i] >= '0') && (str[i] <= '9'))
 	{
 		res = res * 10 + str[i] - '0';
