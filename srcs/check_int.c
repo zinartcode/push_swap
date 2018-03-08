@@ -67,6 +67,7 @@ void			run_multinum(char *av, t_stack *stack)
 				ls_push_back(stack, ft_atoi(tmp));
 			else
 				ft_error(&stack->a);
+				free(tmp);
 		}
 		i++;
 	}
