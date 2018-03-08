@@ -35,6 +35,8 @@ int				main(int ac, char **av)
 	}
 	free_list(&stack->a);
 	free_list(&stack->b);
+	while (1)
+	;
 	return (0);
 }
 
