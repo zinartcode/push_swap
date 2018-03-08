@@ -35,24 +35,20 @@ int				main(int ac, char **av)
 	}
 	free_list(&stack->a);
 	free_list(&stack->b);
-	while (1)
-	;
 	return (0);
 }
 
 int				process_args(int ac, char **av, t_stack *stack)
 {
-	int			i;
 	char		*str;
 
-	i = 0;
 	str = NULL;
-	while (++i < ac)
+	while (++stack->i < ac)
 	{
-		if (is_num(av[i]) && check_int(av[i]))
-			ls_push_back(stack, ft_atoi(av[i]));
-		else if (is_multinum(av[i]))
-			run_multinum(av[i], stack);
+		if (is_num(av[stack->i]) && check_int(av[stack->i]))
+			ls_push_back(stack, ft_atoi(av[stack->i]));
+		else if (is_multinum(av[stack->i]))
+			run_multinum(av[stack->i], stack);
 		else
 			ft_error(&stack->a);
 	}

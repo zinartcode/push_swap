@@ -63,11 +63,9 @@ void			run_multinum(char *av, t_stack *stack)
 			stack->temp = i - stack->pivot;
 			tmp = ft_strndup(&av[stack->temp], stack->pivot);
 			stack->pivot = 0;
-			if (check_int(tmp))
-				ls_push_back(stack, ft_atoi(tmp));
-			else
+			(check_int(tmp)) ? ls_push_back(stack, ft_atoi(tmp)) :
 				ft_error(&stack->a);
-				free(tmp);
+			free(tmp);
 		}
 		i++;
 	}
@@ -87,9 +85,8 @@ int				check_int(char *str)
 		neg = -1;
 		str++;
 	}
-	else
-		if (str[i] == '+')
-			str++;
+	else if (str[i] == '+')
+		str++;
 	while ((str[i] >= '0') && (str[i] <= '9'))
 	{
 		res = res * 10 + str[i] - '0';

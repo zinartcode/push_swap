@@ -10,82 +10,92 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
 #include "libft.h"
+#include <string.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdlib.h>
 
-static t_list		*fd_text(t_list **list, int fd)
+void	ft_realloc(char **str)
 {
-	t_list			*mem;
+	char *tmp;
 
-	mem = *list;
-	while (mem)
+	if (str)
 	{
-		if (fd == (int)mem->content_size)
-			return (mem);
-		mem = mem->next;
+		tmp = ft_strnew(ft_strlen(*str));
+		ft_strcpy(tmp, *str);
+		ft_memdel((void **)str);
+		*str = ft_strnew(ft_strlen(tmp) + BUFF_SIZE);
+		ft_strcpy(*str, tmp);
+		free(tmp);
 	}
-	mem = ft_lstnew("", fd);
-	mem->next = *list;
-	*list = mem;
-	return (mem);
 }
 
-static int			text_add(char *str, char **line)
+void	find_n(char **line, char **buff, int bytes)
 {
-	int				i;
+	int i;
+	int j;
 
-	i = 0;
-	if (ft_strchr(str, '\n'))
+	i = -1;
+	j = 0;
+	while ((*line)[++i])
 	{
-		while (str[i] && str[i] != '\n')
-			i++;
+		if ((*line)[i] == '\n')
+			(*line)[i] = '\0';
 	}
-	else
-		i = ft_strlen(str);
-	*line = ft_strndup(str, i);
-	if (str[i] == '\n')
-		return (++i);
-	return (i);
+	i = -1;
+	if (bytes < BUFF_SIZE)
+		(*buff)[bytes] = 0;
+	while (++i < BUFF_SIZE)
+	{
+		if ((*buff)[i] == '\n')
+		{
+			while (++i < BUFF_SIZE)
+				(*buff)[j++] = (*buff)[i];
+		}
+	}
+	while (j < BUFF_SIZE)
+		(*buff)[j++] = 0;
 }
 
-static void			add_link(t_list *list, char *buf, int len)
+int		obhod_norminett(char **buff, char **line)
 {
-	char			*tmp;
-
-	tmp = list->content;
-	list->content = ft_strnjoin(list->content, buf, len);
-	free(tmp);
-}
-
-static void			text_cut(t_list *list, int len)
-{
-	char			*str;
-
-	str = list->content;
-	list->content = ft_strdup(list->content + len);
-	free(str);
-}
-
-int					get_next_line(int const fd, char **line)
-{
-	char			buf[BUFF_SIZE + 1];
-	static t_list	*list = NULL;
-	t_list			*str;
-	int				tmp;
-	int				len;
-
-	if (fd < 0 || line == NULL || read(fd, buf, 0) || BUFF_SIZE <= 0)
-		return (-1);
-	str = list;
-	list = fd_text(&str, fd);
-	while (!ft_strchr(list->content, '\n') && (tmp = read(fd, buf, BUFF_SIZE)))
-		add_link(list, buf, tmp);
-	len = text_add((char*)list->content, line);
-	text_cut(list, len);
-	list = str;
-	if (len > 0)
+	ft_strcpy(*line, *buff);
+	if (ft_memchr(*buff, '\n', BUFF_SIZE))
+	{
+		find_n(line, buff, BUFF_SIZE);
+		(ft_strlen(*buff) == 0) ? ft_memdel((void **)buff) : 0;
 		return (1);
-	else
+	}
+	return (0);
+}
+
+int		get_next_line(const int fd, char **line)
+{
+	static char	*buff;
+	int			bytes;
+
+	if (fd < 0 || read(fd, buff, 0) || !line)
+		return (-1);
+	if (!(*line = ft_strnew(BUFF_SIZE)))
+		return (-1);
+	if (buff)
+	{
+		if (obhod_norminett(&buff, line) == 1)
+			return (1);
+		free(buff);
+	}
+	buff = ft_strnew(BUFF_SIZE);
+	while ((bytes = read(fd, buff, BUFF_SIZE)))
+	{
+		ft_realloc(line);
+		ft_strncat(*line, buff, bytes);
+		if (ft_memchr(buff, '\n', bytes))
+			break ;
+	}
+	find_n(line, &buff, bytes);
+	if (bytes == 0 && ft_strlen(*line) == 0)
 		return (0);
+	return (1);
 }
