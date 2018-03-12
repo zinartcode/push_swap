@@ -6,7 +6,7 @@
 /*   By: azinnatu <azinnatu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 23:11:24 by azinnatu          #+#    #+#             */
-/*   Updated: 2018/02/19 23:22:32 by azinnatu         ###   ########.fr       */
+/*   Updated: 2018/03/11 23:31:01 by azinnatu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ int				is_num(char *str)
 	int			i;
 
 	i = 0;
-	if (str[i] == '-' || str[i] == '+')
+	while (str[i] == '-' || str[i] == '+')
 		i++;
+	if (i > 1)
+		return (0);
 	while (str[i] && ft_isdigit(str[i]))
 		i++;
 	if (str[i] == '\0')
@@ -32,8 +34,10 @@ int				is_multinum(char *str)
 	int			i;
 
 	i = 0;
-	if (str[i] == '-' || str[i] == '+')
+	while (str[i] == '-' || str[i] == '+')
 		i++;
+	if (i > 1)
+		return (0);
 	while (str[i] && (ft_isdigit(str[i]) || str[i] == ' '
 		|| str[i] == '-' || str[i] == '+'))
 		i++;
@@ -87,6 +91,8 @@ int				check_int(char *str)
 	}
 	else if (str[i] == '+')
 		str++;
+	if (str[1] == '+' || str[1] == '-')
+		return (0);
 	while ((str[i] >= '0') && (str[i] <= '9'))
 	{
 		res = res * 10 + str[i] - '0';
