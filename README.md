@@ -37,20 +37,18 @@ Run make command.
 ```
 make
 ```
-You will get push_swap and checker file.
-
-To run the push_swap,
+To run the push_swap:
 ```
 ./push_swap [numbers]
 ```
-The program will output the operations using to sort the numbers, for example:
+The program will output the operations used to sort the numbers, for example:
 ```
 $> ./push_swap 3 2 1 | cat -e
 sa$
 ra$
 ```
 
-To run the checker,
+To run the checker:
 ```
 ./checker [numbers]
 ```
@@ -71,9 +69,8 @@ You can run push_swap and then send the result to the checker to check it.
 ARG="3 2 1"; ./push_swap $ARG | ./checker $ARG
 ```
 
-I also have 2 debug mode:
-* -v show stack a and stack b in each operation
-```
+Debug mode will print stacks after each funcion:
+
 ./push_swap -v [numbers]
 ```
 
